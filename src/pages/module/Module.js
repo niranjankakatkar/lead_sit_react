@@ -12,6 +12,12 @@ export default function User() {
 
   const [module, setModule] = useState();
   const [activeFlag, setActiveFlag] = useState();
+  const [file, setFile] = useState();
+
+  
+  const [allCount, setAllCount] = useState();
+  const [activeCount, setActiveCount] = useState();
+  const [inactiveCount, setInactiveCount] = useState();
 
   const { deletID } = useParams();
 
@@ -23,6 +29,35 @@ export default function User() {
         setData(res.data);
       })
       .catch((err) => console.error(err));
+
+      //Ge tALL Count
+      axios.get('http://43.205.22.150:5000/module/getAllCnt')
+      .then(res => {
+          console.log(res);
+
+          setAllCount(res.data.cnt);
+      })
+      .catch(err => console.error(err));
+
+      //Ge Active Count
+      axios.get('http://43.205.22.150:5000/module/getActiveCnt')
+            .then(res => {
+                console.log(res);
+
+                setActiveCount(res.data.cnt);
+            })
+            .catch(err => console.error(err));
+      
+      //Get In Active Count
+      axios.get('http://43.205.22.150:5000/module/getInactiveCnt')
+            .then(res => {
+                console.log(res);
+
+                setInactiveCount(res.data.cnt);
+            })
+            .catch(err => console.error(err))
+
+
   }, []);
 
   const handleDelete = (id) => {
@@ -37,11 +72,13 @@ export default function User() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    const formData = new FormData();
+    formData.append('module', module);
+    formData.append('file', file);
+
+
     axios
-      .post("http://43.205.22.150:5000/module/createModule", {
-        module,
-        activeFlag,
-      })
+      .post("http://43.205.22.150:5000/module/createModuleImg", formData)
       .then((res) => {
         console.log(res);
         toast.success("Record Added Successfully", {
@@ -190,7 +227,7 @@ export default function User() {
                       <div className="grid-info-item total-items">
                         <div className="grid-info">
                           <span>Total Module</span>
-                          <h4>987</h4>
+                          <h4>{allCount}</h4>
                         </div>
                         <div className="grid-head-icon">
                           <i className="fe fe-life-buoy"></i>
@@ -205,7 +242,7 @@ export default function User() {
                       <div className="grid-info-item active-items">
                         <div className="grid-info">
                           <span>Active Module</span>
-                          <h4>154</h4>
+                          <h4>{activeCount}</h4>
                         </div>
                         <div className="grid-head-icon">
                           <i className="fe fe-check-square"></i>
@@ -220,7 +257,7 @@ export default function User() {
                       <div className="grid-info-item inactive-items">
                         <div className="grid-info">
                           <span>Inactive Module</span>
-                          <h4>2</h4>
+                          <h4>{inactiveCount}</h4>
                         </div>
                         <div className="grid-head-icon">
                           <i className="fe fe-x-circle"></i>
@@ -235,7 +272,7 @@ export default function User() {
                       <div className="grid-info-item location-info">
                         <div className="grid-info">
                           <span>Module Locations</span>
-                          <h4>200</h4>
+                          <h4>0</h4>
                         </div>
                         <div className="grid-head-icon">
                           <i className="fe fe-map-pin"></i>
@@ -277,17 +314,12 @@ export default function User() {
                 <div className="card-table">
                   <div className="card-body">
                     <div className="table-responsive">
-                      <div className="companies-table">
+                      <div className="companies-table"  style={{height:"100vh"}}> 
                         <table className="table table-center table-hover datatable">
                           <thead className="thead-light">
                             <tr>
                               <th className="no-sort">#</th>
                               <th>Module Name</th>
-
-                              {/* <th>Email</th>
-                              <th>Mobile Number</th> */}
-                              <th>Plan</th>
-                              <th>Created Date</th>
                               <th>Status</th>
                               <th className="no-sort">Action</th>
                             </tr>
@@ -296,16 +328,16 @@ export default function User() {
                             {data.map((user, index) => {
                               return (
                                 <tr key={index}>
-                                  <td>1</td>
+                                  <td>{index+1}</td>
                                   <td>
-                                    <h2 className="table-avatar">
+                                    <h2 className="table-avatar ">
                                       <a
-                                        href="profile.html"
-                                        className="company-avatar avatar-md me-2 companies company-icon"
+                                       
+                                        className=""
                                       >
                                         <img
-                                          className="avatar-img rounded-circle company"
-                                          src="assets/img/companies/company-01.svg"
+                                          className="avatar-xl"
+                                          src="http://localhost:3000/assets/img/logo.png"
                                           alt="Company Image"
                                         />
                                       </a>
@@ -319,8 +351,6 @@ export default function User() {
                                     </a>
                                   </td>
                                   <td>{user.mobileno}</td> */}
-                                  <td>Advanced (Monthly)</td>
-                                  <td>19 Jan 2024</td>
                                   <td>
                                     <span className="badge bg-success-light d-inline-flex align-items-center">
                                       <i className="fe fe-check me-1"></i>Active
@@ -463,6 +493,7 @@ export default function User() {
                     <div className="col-md-12">
                       <div className="form-field-item">
                         <h5 className="form-title">Category</h5>
+                        
                         <div className="profile-picture">
                           <div className="upload-profile">
                             <div className="profile-img company-profile-img">
@@ -480,9 +511,9 @@ export default function User() {
                           </div>
                           <div className="img-upload">
                             <label className="btn btn-upload">
-                              Upload <input type="file" />
+                              Upload <input type="file" accept="image/png,image/jpg,image/jpeg" onChange={(e) => setFile(e.target.files[0])}/>
                             </label>
-                            <a className="btn btn-remove">Remove</a>
+                          
                           </div>
                         </div>
                       </div>

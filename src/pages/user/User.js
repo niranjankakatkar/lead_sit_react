@@ -23,7 +23,7 @@ export default function User() {
     const [inactiveUser, setInactiveuser] = useState();
     const { post_ } = "user";
 
-
+ 
 
 
     useEffect(() => {
@@ -584,8 +584,8 @@ export default function User() {
                                                 <h5 className="form-title">User Profile</h5>
                                                 <div className="profile-picture">
                                                     <div className="upload-profile">
-                                                        <div className="profile-img company-profile-img">
-                                                            <img id="company-img" className="img-fluid me-0"
+                                                        <div className="profile-img  avatar-xl" style={{marginRight:"10px"}}>
+                                                            <img id="company-img" className="img-fluid avatar-xl me-0"
                                                                 src="assets/img/companies/company-add-img.svg"
                                                                 alt="profile-img" />
                                                         </div>
@@ -598,7 +598,7 @@ export default function User() {
                                                         <label className="btn btn-upload">
                                                             Upload <input type="file" accept="image/png,image/jpg,image/jpeg" onChange={(e) => setFile(e.target.files[0])} />
                                                         </label>
-                                                        <a className="btn btn-remove">Remove</a>
+                                                        
                                                     </div>
                                                 </div>
                                             </div>

@@ -1,30 +1,33 @@
-import React from 'react'
+import React, {useEffect, useState } from 'react'
 import { Link, useLocation, useNavigate } from 'react-router-dom'
 import axios from 'axios';
 
 export default function Navbar() {
     const token = localStorage.getItem("token");
     const navigate = useNavigate();
+    const [modules,setModules]=useState([]);
 
     let history = useLocation();
 
   
-    const getUserData = (id) => {
-        axios.get('http://43.205.22.150:5000/user/getSingleUser/' + id)
+    useEffect(() => {
+        axios.get('http://localhost:5000/module/getAllModule')
             .then(res => {
                 // setName(res.data.name);
                 //  setEmail(res.data.email);
                 //setMobileno(res.data.mobileno);
-                console.log("-----------------"+token);
-                console.log("-----------------"+res);
+               setModules(res.data)
+               //console.log("---------A"+res.data);
             })
             .catch(err => console.error(err))
-    }
+    }, [])
+
+   
 
     if(!token){
         navigate("/");
     }else{
-        getUserData(token);
+       // getUserData(token);
     }
 
    
@@ -88,23 +91,19 @@ export default function Navbar() {
                 <ul className="nav nav-tabs user-menu">
 
                     <li className="nav-item dropdown has-arrow flag-nav">
-                        <a className="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button">
-                            <img src="assets/img/flags/us1.png" alt="flag" /><span>English</span>
+                    <a className="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button">
+                            <img src="assets/img/flags/us1.png" alt="flag" /><span>Main</span>
                         </a>
                         <div className="dropdown-menu dropdown-menu-end">
-                            <a href="javascript:void(0);" className="dropdown-item">
-                                <img src="assets/img/flags/us.png" alt="flag" /><span>English</span>
-                            </a>
-                            <a href="javascript:void(0);" className="dropdown-item">
-                                <img src="assets/img/flags/fr.png" alt="flag" /><span>French</span>
-                            </a>
-                            <a href="javascript:void(0);" className="dropdown-item">
-                                <img src="assets/img/flags/es.png" alt="flag" /><span>Spanish</span>
-                            </a>
-                            <a href="javascript:void(0);" className="dropdown-item">
-                                <img src="assets/img/flags/de.png" alt="flag" /><span>German</span>
-                            </a>
-                        </div>
+                        {
+                            modules.map((list, index) => {
+                                return <a key={index} href="javascript:void(0);" className="dropdown-item">
+                                    <img src={`http://43.205.22.150:5000/users/${list.filename}`} alt="" /><span><b>{list.module}</b></span>
+                                </a>
+                          
+                      
+                        })}
+                          </div>
                     </li>
 
                     <li className="nav-item dropdown  flag-nav dropdown-heads">

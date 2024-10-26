@@ -358,9 +358,9 @@ Version      : 1.0
 
 	if ($('.custom-file-container').length > 0) {
 		//First upload
-		var firstUpload = new FileUploadWithPreview('myFirstImage')
+		//var firstUpload =  FileUploadWithPreview('myFirstImage')
 		//Second upload
-		var secondUpload = new FileUploadWithPreview('mySecondImage')
+		//var secondUpload =  FileUploadWithPreview('mySecondImage')
 	}
 
 	// Clipboard 
