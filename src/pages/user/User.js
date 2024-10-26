@@ -98,8 +98,9 @@ export default function User() {
         formData.append('mobileno', mobileno);
         formData.append('password', password);
         formData.append('file', file);
-        
-        axios.post('http://43.205.22.150:5000/user/createUser', formData)
+
+        if(!file){
+            axios.post('http://43.205.22.150:5000/user/createUser', formData)
             .then(res => {
                 const loginID = res.data._id;
                 axios.post('http://43.205.22.150:5000/auth/createAuth', { name, email, password, post_, loginID })
@@ -123,6 +124,34 @@ export default function User() {
                 });
                 console.log(err)
             })
+        }else{
+            axios.post('http://43.205.22.150:5000/user/createUserImg', formData)
+            .then(res => {
+                const loginID = res.data._id;
+                axios.post('http://43.205.22.150:5000/auth/createAuth', { name, email, password, post_, loginID })
+                //.then(res1=>{ console.log("---------"+res1);})
+                //.catch .catch(err1=>{ console.log("-------"+err1);})
+
+                toast.success('Record Added Successfully', {
+                    position: "top-right",
+                    autoClose: 3000,
+                    theme: "colored",
+                    transition: Slide,
+                });
+
+            })
+            .catch(err => {
+                toast.error('Somthing is wrong', {
+                    position: "top-right",
+                    autoClose: 3000,
+                    theme: "colored",
+                    transition: Slide,
+                });
+                console.log(err)
+            })
+        }
+       
+           
 
 
         /*  axios.post('http://43.205.22.150:5000/user/uploadimg',formData)
