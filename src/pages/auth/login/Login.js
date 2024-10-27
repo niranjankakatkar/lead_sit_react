@@ -12,7 +12,7 @@ export default function Login() {
            
         })
 
-        const [email,setEmail]=useState();
+        const [username,setEmail]=useState();
         const [password,setPassword]=useState();
 
         const handInputChange=(event)=>{
@@ -27,7 +27,7 @@ export default function Login() {
         const handleSubmit = async(e)=>{
             e.preventDefault();
             try {
-                axios.post("http://43.205.22.150:5000/auth/login",{email,password})
+                axios.post("http://43.205.22.150:5000/admin_auth",{username,password})
                 .then(result=>{
                     
                     if(result.data.msg===""){
@@ -97,7 +97,7 @@ export default function Login() {
                             <form  onSubmit={handleSubmit}>
                                 <div className="input-block mb-3">
                                     <label className="form-control-label">Email Address</label>
-                                    <input type="email" className="form-control" name='email' value={email} onChange={(e)=>setEmail(e.target.value)}/>
+                                    <input type="email" className="form-control" name='username' value={username} onChange={(e)=>setEmail(e.target.value)}/>
                                 </div>
                                 <div className="input-block mb-3">
                                     <label className="form-control-label">Password</label>
