@@ -98,7 +98,7 @@ export default function Navbar() {
                         {
                             modules.map((list, index) => {
                                 return <a key={index} href="javascript:void(0);" className="dropdown-item">
-                                    <img src={`http://43.205.22.150:5000/users/${list.filename}`} alt="" /><span><b>{list.module}</b></span>
+                                    <img src={`http://43.205.22.150:5000/users/${list.filename}`} alt="Module Image" /><span><b>{list.module}</b></span>
                                 </a>
                           
                       
