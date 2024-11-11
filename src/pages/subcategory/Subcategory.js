@@ -565,7 +565,7 @@ export default function User() {
                           )}
                           isOptionEqualToValue={(option, value) =>
                             option._id === value._id
-                          } // Compare by _id
+                          }
                         />
                       </div>
                     </div>

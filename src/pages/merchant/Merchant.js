@@ -1,4 +1,3 @@
-import { Autocomplete, TextField } from "@mui/material";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
@@ -9,74 +8,35 @@ export default function User() {
   const navigate = useNavigate();
   const { id } = useParams();
   const [data, setData] = useState([]);
-  const [modules, setModules] = useState([]);
 
-  const [module, setModule] = useState();
-  const [category, setCategory] = useState();
+  const [franchisee, setFranchisee] = useState();
+  const [oname, setOname] = useState();
+  const [email, setEmail] = useState();
+  const [mobileno, setMobileno] = useState();
+  const [password, setPassword] = useState();
   const [activeFlag, setActiveFlag] = useState();
-
-  const [allcnt, setAllCount] = useState();
-  const [activeCount, setActiveCount] = useState();
-  const [inactiveCount, setInactiveCount] = useState();
-  const { post } = "user";
 
   const { deletID } = useParams();
 
   useEffect(() => {
     axios
-      .get("http://43.205.22.150:5000/category/getAllCategory")
+      .get("http://43.205.22.150:5000/merchantonboarding/getAllMerchant")
       .then((res) => {
         console.log(res);
         setData(res.data);
-      })
-      .catch((err) => console.error(err));
-
-    // Fetch modules
-    axios
-      .get("http://43.205.22.150:5000/module/getAllModule")
-      .then((res) => setModules(res.data))
-      .catch((err) => console.error(err));
-  }, []);
-
-  useEffect(() => {
-    axios
-      .get("http://43.205.22.150:5000/category/getAllCnt")
-      .then((res) => {
-        console.log(res);
-
-        setAllCount(res.data.cnt);
-      })
-      .catch((err) => console.error(err));
-  }, []);
-
-  useEffect(() => {
-    axios
-      .get("http://43.205.22.150:5000/category/getActiveCnt")
-      .then((res) => {
-        console.log(res);
-
-        setActiveCount(res.data.cnt);
-      })
-      .catch((err) => console.error(err));
-  }, []);
-
-  useEffect(() => {
-    axios
-      .get("http://43.205.22.150:5000/category/getInactiveCnt")
-      .then((res) => {
-        console.log(res);
-
-        setInactiveCount(res.data.cnt);
       })
       .catch((err) => console.error(err));
   }, []);
 
   const handleDelete = (id) => {
     axios
-      .delete("http://43.205.22.150:5000/caetegory/deleteSingleCategory/" + id)
+      .delete(
+        "http://43.205.22.150:5000/merchantonboarding/deleteSingleMerchant/" +
+          id
+      )
       .then((res) => {
         console.log(res);
-        navigate("/category");
+        navigate("/merchant");
       })
       .catch((err) => console.error(err));
   };
@@ -84,9 +44,12 @@ export default function User() {
   const handleSubmit = (e) => {
     e.preventDefault();
     axios
-      .post("http://43.205.22.150:5000/category/createCategory", {
-        module,
-        category,
+      .post("http://43.205.22.150:5000/merchantonboarding/createMerchant", {
+        franchisee,
+        oname,
+        email,
+        mobileno,
+        password,
         activeFlag,
       })
       .then((res) => {
@@ -107,8 +70,55 @@ export default function User() {
         });
         console.log(err);
       });
-    navigate("/category");
+    /*
+            try {
+                const response=fetch("http://localhost:5000/user/createUser",{
+                    method:"POST",
+                    headers:{
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify(formData)
+                })
+                const result=(await response).json();
+                console.log(result);
+                toast.success('Record Added Successfully', {
+                    position: "top-right",
+                    autoClose: 3000,
+                    theme: "colored",
+                    transition: Slide,
+                    });
+                navigate("/user");
+                
+               
+            } catch (error) {
+                console.log(error.message);
+            }finally{
+                setFormData({
+                    oname:"",
+                    email:"",
+                    mobileno:"",
+                    password:"",
+                    activeFlag:""
+                })
+            }*/
+    navigate("/franchisee");
   };
+
+  // search option code
+  const planOptions = [
+    { title: "All Plans" },
+    { title: "Advanced" },
+    { title: "Basic" },
+    { title: "Enterprise" },
+    { title: "Premium" },
+    { title: "Free" },
+  ];
+
+  const planTypeOptions = [
+    { title: "Monthly" },
+    { title: "Yearly" },
+    { title: "Lifetime" },
+  ];
 
   return (
     <>
@@ -118,7 +128,7 @@ export default function User() {
           <div className="content container-fluid">
             <div className="page-header">
               <div className="content-page-header">
-                <h5>Category</h5>
+                <h5>Merchant</h5>
                 <div className="page-content">
                   <div className="list-btn">
                     <ul className="filter-list">
@@ -209,7 +219,7 @@ export default function User() {
                           Print
                         </a>
                       </li>
-                      <li>
+                      {/* <li>
                         <a
                           className="btn btn-primary"
                           href="#"
@@ -220,9 +230,9 @@ export default function User() {
                             className="fa fa-plus-circle me-2"
                             aria-hidden="true"
                           ></i>
-                          Add Category
+                          Add Sellers
                         </a>
-                      </li>
+                      </li> */}
                     </ul>
                   </div>
                 </div>
@@ -236,8 +246,8 @@ export default function User() {
                     <div className="card-body">
                       <div className="grid-info-item total-items">
                         <div className="grid-info">
-                          <span>Total Category</span>
-                          <h4>{allcnt}</h4>
+                          <span>Total Sellers</span>
+                          <h4>0</h4>
                         </div>
                         <div className="grid-head-icon">
                           <i className="fe fe-life-buoy"></i>
@@ -251,8 +261,8 @@ export default function User() {
                     <div className="card-body">
                       <div className="grid-info-item active-items">
                         <div className="grid-info">
-                          <span>Active Category</span>
-                          <h4>{activeCount}</h4>
+                          <span>Active Sellers</span>
+                          <h4>0</h4>
                         </div>
                         <div className="grid-head-icon">
                           <i className="fe fe-check-square"></i>
@@ -266,8 +276,8 @@ export default function User() {
                     <div className="card-body">
                       <div className="grid-info-item inactive-items">
                         <div className="grid-info">
-                          <span>Inactive Category</span>
-                          <h4>{inactiveCount}</h4>
+                          <span>Inactive Sellers</span>
+                          <h4>0</h4>
                         </div>
                         <div className="grid-head-icon">
                           <i className="fe fe-x-circle"></i>
@@ -281,8 +291,8 @@ export default function User() {
                     <div className="card-body">
                       <div className="grid-info-item location-info">
                         <div className="grid-info">
-                          <span>Category Locations</span>
-                          <h4>200</h4>
+                          <span>Sellers Locations</span>
+                          <h4>0</h4>
                         </div>
                         <div className="grid-head-icon">
                           <i className="fe fe-map-pin"></i>
@@ -324,18 +334,21 @@ export default function User() {
                 <div className="card-table">
                   <div className="card-body">
                     <div className="table-responsive">
-                      <div
-                        className="companies-table"
-                        style={{ height: "100vh" }}
-                      >
+                      <div className="companies-table">
                         <table className="table table-center table-hover datatable">
                           <thead className="thead-light">
                             <tr>
                               <th className="no-sort">#</th>
-                              <th>Module Name</th>
-                              <th>Category</th>
-                              {/* <th>Email</th>
-                              <th>Mobile Number</th> */}
+                              <th>Seller Name</th>
+
+                              <th>Email</th>
+                              <th>Mobile Number</th>
+                              <th>Business Name</th>
+                              <th>Business Type</th>
+                              <th>Business Address</th>
+                              <th>Pincode</th>
+                              <th>Plan</th>
+                              <th>Created Date</th>
                               <th>Status</th>
                               <th className="no-sort">Action</th>
                             </tr>
@@ -357,16 +370,22 @@ export default function User() {
                                           alt="Company Image"
                                         />
                                       </a>
-                                      <a href="#">{user.module}</a>
+                                      <a href="#">{user.name}</a>
                                     </h2>
                                   </td>
-                                  <td>{user.category}</td>
-                                  {/* <td>
+
+                                  <td>
                                     <a href="" className="__cf_email__">
                                       {user.email}
                                     </a>
                                   </td>
-                                  <td>{user.mobileno}</td> */}
+                                  <td>{user.mobileno}</td>
+                                  <td>{user.bname}</td>
+                                  <td>{user.btype}</td>
+                                  <td>{user.baddress}</td>
+                                  <td>{user.pincode}</td>
+                                  <td>Advanced (Monthly)</td>
+                                  <td>19 Jan 2024</td>
                                   <td>
                                     <span className="badge bg-success-light d-inline-flex align-items-center">
                                       <i className="fe fe-check me-1"></i>Active
@@ -387,7 +406,7 @@ export default function User() {
                                           <li>
                                             <Link
                                               className="dropdown-item"
-                                              to={`/module_detail/${user._id}`}
+                                              to={`/franchisee_detail/${user._id}`}
                                             >
                                               <i className="far fa-eye me-2"></i>
                                               View User Details
@@ -396,6 +415,7 @@ export default function User() {
                                           <li>
                                             <a
                                               className="dropdown-item"
+                                              href="javascript:void(0);"
                                               data-bs-toggle="modal"
                                               data-bs-target="#edit_companies"
                                             >
@@ -459,7 +479,7 @@ export default function User() {
                     </span>
                   </div>
                   <h3>Are You Sure?</h3>
-                  <p>You want delete user</p>
+                  <p>You want delete seller</p>
                 </div>
                 <div className="modal-btn delete-action">
                   <div className="modal-footer justify-content-center p-0">
@@ -489,11 +509,11 @@ export default function User() {
           id="add_companies"
           role="dialog"
         >
-          <div className="modal-dialog modal-dialog-centered modal-md">
+          {/* <div className="modal-dialog modal-dialog-centered modal-md">
             <div className="modal-content">
               <div className="modal-header border-0">
                 <div className="form-header modal-header-title text-start mb-0">
-                  <h4 className="mb-0">Add New Category</h4>
+                  <h4 className="mb-0">Add New Franchisee</h4>
                 </div>
                 <button
                   type="button"
@@ -507,7 +527,7 @@ export default function User() {
                   <div className="row">
                     <div className="col-md-12">
                       <div className="form-field-item">
-                        <h5 className="form-title">Category</h5>
+                        <h5 className="form-title">User Profile</h5>
                         <div className="profile-picture">
                           <div className="upload-profile">
                             <div className="profile-img company-profile-img">
@@ -534,35 +554,147 @@ export default function User() {
                     </div>
                     <div className="col-md-6">
                       <div className="input-block mb-3">
-                        <Autocomplete
-                          options={modules}
-                          getOptionLabel={(option) => option.module || ""}
-                          value={module}
-                          onChange={(event, newValue) => setModule(newValue)}
-                          renderInput={(params) => (
-                            <TextField
-                              {...params}
-                              label="Module Name"
-                              variant="outlined"
-                              fullWidth
-                            />
-                          )}
-                          isOptionEqualToValue={
-                            (option, value) => option._id === value._id // Compare by _id
-                          }
+                        <label className="form-label">Franchisee Name </label>
+                        <input
+                          type="text"
+                          className="form-control"
+                          placeholder="Enter Franchisee Name"
+                          name="franchisee"
+                          value={franchisee}
+                          onChange={(e) => setFranchisee(e.target.value)}
                         />
                       </div>
                     </div>
                     <div className="col-md-6">
                       <div className="input-block mb-3">
-                        <TextField
-                          variant="outlined"
-                          placeholder="Select Category"
-                          value={category}
-                          onChange={(e) => setCategory(e.target.value)}
-                          fullWidth
+                        <label className="form-label">Owner Name </label>
+                        <input
+                          type="text"
+                          className="form-control"
+                          placeholder="Enter User Name"
+                          name="name"
+                          value={oname}
+                          onChange={(e) => setOname(e.target.value)}
                         />
                       </div>
+                    </div>
+                    <div className="col-md-6">
+                      <div className="input-block mb-3">
+                        <label className="form-label">Email Address </label>
+                        <input
+                          type="text"
+                          className="form-control"
+                          placeholder="Enter User Email"
+                          name="email"
+                          value={email}
+                          onChange={(e) => setEmail(e.target.value)}
+                        />
+                      </div>
+                    </div>
+
+                    <div className="col-md-6">
+                      <div className="input-block mb-3">
+                        <label className="mb-2">Phone Number</label>
+                        <input
+                          className="form-control"
+                          id="mobileno"
+                          name="mobileno"
+                          type="text"
+                          placeholder="Phone Number"
+                          value={mobileno}
+                          onChange={(e) => setMobileno(e.target.value)}
+                        />
+                      </div>
+                    </div>
+
+                    <div className="col-md-6">
+                      <div className="input-block mb-3">
+                        <label className="form-control-label">Password</label>
+                        <div className="pass-group modal-password-field">
+                          <input
+                            type="password"
+                            className="form-control pass-input"
+                            placeholder="Password"
+                            name="password"
+                            value={password}
+                            onChange={(e) => setPassword(e.target.value)}
+                          />
+                          <span className="fas toggle-password fa-eye-slash"></span>
+                        </div>
+                      </div>
+                    </div>
+                    <div className="col-md-6">
+                      <div className="input-block mb-3">
+                        <label className="form-control-label">
+                          Confirm Password
+                        </label>
+                        <div className="pass-group modal-password-field">
+                          <input
+                            type="password"
+                            className="form-control pass-input-two"
+                            placeholder="Confirm Password"
+                          />
+                          <span className="fas toggle-password-two fa-eye-slash"></span>
+                        </div>
+                      </div>
+                    </div>
+                    <div className="col-md-12">
+                      <div className="input-block mb-3">
+                        <label className="form-label">Full Address </label>
+                        <textarea
+                          type="text"
+                          className="form-control"
+                          rows="3"
+                        ></textarea>
+                      </div>
+                    </div>
+                    <div className="col-md-6">
+                      <div className="input-block mb-3">
+                        <label className="form-control-label mx-1">
+                          Plan Name
+                        </label>
+                        <Autocomplete
+                          options={planOptions}
+                          getOptionLabel={(option) => option.title}
+                          renderInput={(params) => (
+                            <TextField
+                              {...params}
+                              variant="outlined"
+                              placeholder="Select Plan"
+                              InputProps={{
+                                ...params.InputProps,
+                                style: { height: "35px" },
+                              }}
+                            />
+                          )}
+                          style={{ width: "100%" }}
+                        />
+                      </div>
+                    </div>
+
+                    <div className="col-md-6">
+                      <div className="input-block mb-3">
+                        <label className="form-control-label mx-1">
+                          Plan Type
+                        </label>
+                        <Autocomplete
+                          options={planTypeOptions}
+                          getOptionLabel={(option) => option.title}
+                          renderInput={(params) => (
+                            <TextField
+                              {...params}
+                              variant="outlined"
+                              placeholder="Select Plan Type"
+                              InputProps={{
+                                ...params.InputProps,
+                                style: { height: "35px" },
+                              }}
+                            />
+                          )}
+                          style={{ width: "100%" }}
+                        />
+                      </div>
+                              
                     </div>
 
                     <div className="col-md-12">
@@ -606,7 +738,7 @@ export default function User() {
                 </div>
               </form>
             </div>
-          </div>
+          </div> */}
         </div>
 
         <div
