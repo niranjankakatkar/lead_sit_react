@@ -14,6 +14,7 @@ export default function User() {
   const [module, setModule] = useState();
   const [category, setCategory] = useState();
   const [activeFlag, setActiveFlag] = useState();
+  const [file, setFile] = useState();
 
   const [allcnt, setAllCount] = useState();
   const [activeCount, setActiveCount] = useState();
@@ -83,31 +84,34 @@ export default function User() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    const formData = new FormData();
+    formData.append("file", file); 
+    formData.append("moduleId", module._id); 
+    formData.append("category", category);
+    formData.append("activeFlag", activeFlag);
+
     axios
-      .post("http://43.205.22.150:5000/category/createCategory", {
-        module,
-        category,
-        activeFlag,
+      .post("http://localhost:5000/category/createCategoryImg", formData, {
+        headers: { "Content-Type": "multipart/form-data" },
       })
-      .then((res) => {
-        console.log(res);
+      .then(() => {
         toast.success("Record Added Successfully", {
           position: "top-right",
           autoClose: 3000,
           theme: "colored",
           transition: Slide,
         });
+        navigate("/category");
       })
       .catch((err) => {
-        toast.error("Somthing is wrong", {
+        toast.error("Something went wrong", {
           position: "top-right",
           autoClose: 3000,
           theme: "colored",
           transition: Slide,
         });
-        console.log(err);
+        console.error(err);
       });
-    navigate("/category");
   };
 
   return (
@@ -525,7 +529,12 @@ export default function User() {
                           </div>
                           <div className="img-upload">
                             <label className="btn btn-upload">
-                              Upload <input type="file" />
+                              Upload{" "}
+                              <input
+                                type="file"
+                                accept="image/png,image/jpg,image/jpeg"
+                                onChange={(e) => setFile(e.target.files[0])}
+                              />
                             </label>
                             <a className="btn btn-remove">Remove</a>
                           </div>

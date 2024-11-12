@@ -16,6 +16,7 @@ export default function User() {
   const [module, setModule] = useState();
   const [category, setCategory] = useState();
   const [subcategory, setSubcategory] = useState();
+  const [file, setFile] = useState();
   const [activeFlag, setActiveFlag] = useState();
 
   const { deletID } = useParams();
@@ -72,32 +73,39 @@ export default function User() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    const formData = new FormData();
+    formData.append("file", file); // assuming you have the file in `file` state
+    formData.append("moduleId", module._id); // Ensure the `module._id` exists
+    formData.append("categoryId", category._id); // Ensure the `category._id` exists
+    formData.append("subcategory", subcategory);
+    formData.append("activeFlag", activeFlag);
+
     axios
-      .post("http://43.205.22.150:5000/subcategory/createSubcategory", {
-        module,
-        category,
-        subcategory,
-        activeFlag,
-      })
-      .then((res) => {
-        console.log(res);
+      .post(
+        "http://localhost:5000/subcategory/createSubcategoryImg",
+        formData,
+        {
+          headers: { "Content-Type": "multipart/form-data" },
+        }
+      )
+      .then(() => {
         toast.success("Record Added Successfully", {
           position: "top-right",
           autoClose: 3000,
           theme: "colored",
           transition: Slide,
         });
+        navigate("/subcategory");
       })
       .catch((err) => {
-        toast.error("Somthing is wrong", {
+        toast.error("Something went wrong", {
           position: "top-right",
           autoClose: 3000,
           theme: "colored",
           transition: Slide,
         });
-        console.log(err);
+        console.error(err);
       });
-    navigate("/subcategory");
   };
 
   return (
@@ -519,7 +527,12 @@ export default function User() {
                           </div>
                           <div className="img-upload">
                             <label className="btn btn-upload">
-                              Upload <input type="file" />
+                              Upload{" "}
+                              <input
+                                type="file"
+                                accept="image/png,image/jpg,image/jpeg"
+                                onChange={(e) => setFile(e.target.files[0])}
+                              />
                             </label>
                             <a className="btn btn-remove">Remove</a>
                           </div>
