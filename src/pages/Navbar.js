@@ -77,7 +77,7 @@ export default function Navbar() {
                 alt="Logo"
               />
             </Link>
-          </div>  
+          </div>
         </div>
 
         <a href="javascript:void(0);" id="toggle_btn">
@@ -256,6 +256,14 @@ export default function Navbar() {
                   <i className="fe fe-user"></i> <span>Users</span>
                 </Link>
               </li>
+              <li className="menu-title">
+                <span>Seller Management</span>
+              </li>
+              <li>
+                <Link to="/seller">
+                  <i className="fe fe-user"></i> <span>Seller</span>
+                </Link>
+              </li>
               {/* <li>
                 <a href="#">
                   <i className="fe fe-clipboard"></i>{" "}
@@ -305,19 +313,18 @@ export default function Navbar() {
               <li className="menu-title">
                 <span>Onboarding</span>
               </li>
-              <li>
+              {/* <li>
                 <Link to="/seller">
                   <i className="fe fe-user"></i> <span>Seller Onboarding</span>
                 </Link>
-              </li>
+              </li> */}
 
               <li>
                 <Link to="/merchant">
-                  <i className="fe fe-user"></i> <span>Merchant Onboarding</span>
+                  <i className="fe fe-user"></i>{" "}
+                  <span>Merchant Onboarding</span>
                 </Link>
               </li>
-
-            
 
               <li className="menu-title">
                 <span>Employee Management</span>

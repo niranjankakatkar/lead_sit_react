@@ -57,8 +57,9 @@ function App() {
           // path="/serviceleaddetails"
           element={<ServiceLeadDetails />}
         ></Route>
-        {/* <Route path="/seller" element={<Seller />}></Route> */}
+        <Route path="/seller" element={<Seller />}></Route>
         <Route path="/merchant" element={<Merchant />}></Route>
+       
       </Routes>
     </Router>
   );

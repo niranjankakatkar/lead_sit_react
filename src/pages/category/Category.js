@@ -85,13 +85,13 @@ export default function User() {
   const handleSubmit = (e) => {
     e.preventDefault();
     const formData = new FormData();
-    formData.append("file", file); 
-    formData.append("moduleId", module._id); 
+    formData.append("file", file);
+    formData.append("moduleId", module._id);
     formData.append("category", category);
     formData.append("activeFlag", activeFlag);
 
     axios
-      .post("http://localhost:5000/category/createCategoryImg", formData, {
+      .post("http://43.205.22.150:5000/category/createCategoryImg", formData, {
         headers: { "Content-Type": "multipart/form-data" },
       })
       .then(() => {

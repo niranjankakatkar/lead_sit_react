@@ -21,6 +21,7 @@ export default function User() {
 
   const { deletID } = useParams();
 
+  // Outer useEffect to fetch data
   useEffect(() => {
     axios
       .get("http://43.205.22.150:5000/subcategory/getAllSubcategory")
@@ -30,7 +31,6 @@ export default function User() {
       })
       .catch((err) => console.error(err));
 
-    // Fetch modules
     axios
       .get("http://43.205.22.150:5000/module/getAllModule")
       .then((res) => setModules(res.data))
@@ -45,19 +45,17 @@ export default function User() {
       .catch((err) => console.error(err));
   }, []);
 
+  // Fetch categories based on selected module
   useEffect(() => {
     if (module) {
-      // Fetch categories for the selected module
       axios
         .get(
           `http://43.205.22.150:5000/category/getCategoriesByModule/${module._id}`
         )
-        .then((res) => {
-          setFilteredCategories(res.data); // Set filtered categories based on the selected module
-        })
+        .then((res) => setFilteredCategories(res.data))
         .catch((err) => console.error(err));
     } else {
-      setFilteredCategories(categories); // Reset to all categories if no module is selected
+      setFilteredCategories([]); // Reset categories if no module is selected
     }
   }, [module]);
 
@@ -82,7 +80,7 @@ export default function User() {
 
     axios
       .post(
-        "http://localhost:5000/subcategory/createSubcategoryImg",
+        "http://43.205.22.150:5000/subcategory/createSubcategoryImg",
         formData,
         {
           headers: { "Content-Type": "multipart/form-data" },
@@ -527,18 +525,25 @@ export default function User() {
                           </div>
                           <div className="img-upload">
                             <label className="btn btn-upload">
-                              Upload{" "}
+                              Upload
                               <input
                                 type="file"
                                 accept="image/png,image/jpg,image/jpeg"
                                 onChange={(e) => setFile(e.target.files[0])}
                               />
                             </label>
-                            <a className="btn btn-remove">Remove</a>
+                            <button
+                              type="button"
+                              className="btn btn-remove"
+                              onClick={() => setFile(null)}
+                            >
+                              Remove
+                            </button>
                           </div>
                         </div>
                       </div>
                     </div>
+
                     <div className="col-md-6">
                       <div className="input-block mb-3">
                         <Autocomplete
@@ -556,7 +561,7 @@ export default function User() {
                           )}
                           isOptionEqualToValue={(option, value) =>
                             option._id === value._id
-                          } // Compare by _id
+                          }
                         />
                       </div>
                     </div>
@@ -564,7 +569,7 @@ export default function User() {
                     <div className="col-md-6">
                       <div className="input-block mb-3">
                         <Autocomplete
-                          options={filteredCategories} // Use filtered categories here
+                          options={filteredCategories} // Only categories related to the selected module
                           getOptionLabel={(option) => option.category || ""}
                           value={category}
                           onChange={(event, newValue) => setCategory(newValue)}
@@ -592,10 +597,10 @@ export default function User() {
                           onChange={(e) => setSubcategory(e.target.value)}
                           fullWidth
                         />
-                      </div>{" "}
+                      </div>
                     </div>
 
-                    <div className="col-md-12">
+                    <div className="col-md12">
                       <div className="d-flex align-items-center mb-3">
                         <h6 className="mb-0">Status</h6>
                         <div className="status-toggle">

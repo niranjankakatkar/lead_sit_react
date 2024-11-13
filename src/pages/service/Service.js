@@ -16,6 +16,9 @@ export default function User() {
   const [activeFlag, setActiveFlag] = useState();
   const [file, setFile] = useState();
 
+  const [categories, setCategories] = useState([]);
+  const [filteredSubcategories, setFilteredSubcategories] = useState([]);
+
   const [allCount, setAllCount] = useState();
   const [activeCount, setActiveCount] = useState();
   const [inactiveCount, setInactiveCount] = useState();
@@ -28,6 +31,14 @@ export default function User() {
       .then((res) => {
         console.log(res);
         setData(res.data);
+      })
+      .catch((err) => console.error(err));
+
+    axios
+      .get("http://43.205.22.150:5000/category/getAllCategory")
+      .then((res) => {
+        setCategories(res.data);
+        setFilteredCategories(res.data); // Initially set filtered categories
       })
       .catch((err) => console.error(err));
 
@@ -61,6 +72,19 @@ export default function User() {
       })
       .catch((err) => console.error(err));
   }, []);
+
+  useEffect(() => {
+    if (category) {
+      axios
+        .get(
+          `http://43.205.22.150:5000/subcategory/getSubcategoriesByCategory/${category._id}`
+        )
+        .then((res) => setFilteredSubcategories(res.data))
+        .catch((err) => console.error(err));
+    } else {
+      setFilteredSubcategories([]); // Reset subcategories if no category is selected
+    }
+  }, [category]);
 
   const handleDelete = (id) => {
     axios
@@ -100,7 +124,7 @@ export default function User() {
         });
         console.log(err);
       });
-    navigate("/service");
+    navigate("/servicetab");
   };
 
   return (
@@ -528,13 +552,18 @@ export default function User() {
                     <div className="form-field-item">
                       <h5 className="form-title">Category</h5>
                       <div className="input-block mb-3">
-                        <label className="form-label">Category</label>
-                        <input
-                          type="text"
-                          className="form-control"
-                          placeholder="Enter Category"
+                        <Autocomplete
+                          options={categories}
+                          getOptionLabel={(option) => option.category || ""}
+                          renderInput={(params) => (
+                            <TextField
+                              {...params}
+                              label="Select Category"
+                              variant="outlined"
+                            />
+                          )}
                           value={category}
-                          onChange={(e) => setCategory(e.target.value)}
+                          onChange={(event, newValue) => setCategory(newValue)}
                         />
                       </div>
                     </div>
@@ -544,13 +573,20 @@ export default function User() {
                     <div className="form-field-item">
                       <h5 className="form-title">Subcategory</h5>
                       <div className="input-block mb-3">
-                        <label className="form-label">Subcategory</label>
-                        <input
-                          type="text"
-                          className="form-control"
-                          placeholder="Enter Subcategory"
+                        <Autocomplete
+                          options={filteredSubcategories}
+                          getOptionLabel={(option) => option.subcategory || ""}
+                          renderInput={(params) => (
+                            <TextField
+                              {...params}
+                              label="Select Subcategory"
+                              variant="outlined"
+                            />
+                          )}
                           value={subcategory}
-                          onChange={(e) => setSubcategory(e.target.value)}
+                          onChange={(event, newValue) =>
+                            setSubcategory(newValue)
+                          }
                         />
                       </div>
                     </div>

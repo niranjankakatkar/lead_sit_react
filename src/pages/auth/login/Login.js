@@ -27,7 +27,7 @@ export default function Login() {
         const handleSubmit = async(e)=>{
             e.preventDefault();
             try {
-                axios.post("http://43.205.22.150:5000/admin_auth",{username,password})
+                axios.post("http://43.205.22.150:5000/admin/admin_auth",{username,password})
                 .then(result=>{
                     
                     if(result.data.msg===""){
