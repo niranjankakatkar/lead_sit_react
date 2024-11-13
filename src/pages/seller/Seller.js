@@ -221,18 +221,13 @@ export default function User() {
                         </a>
                       </li>
                       <li>
-                        <a
-                          className="btn btn-primary"
-                          href="#"
-                          data-bs-toggle="modal"
-                          data-bs-target="#add_companies"
-                        >
+                        <Link to="/addSeller" className="btn btn-primary">
                           <i
                             className="fa fa-plus-circle me-2"
                             aria-hidden="true"
                           ></i>
                           Add Sellers
-                        </a>
+                        </Link>
                       </li>
                     </ul>
                   </div>

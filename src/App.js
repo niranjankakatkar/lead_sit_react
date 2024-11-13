@@ -16,6 +16,7 @@ import ServiceTab from "./pages/service/index";
 import Service from "./pages/service/Service";
 import ServiceLeadDetails from "./pages/service/ServiceLeadDetails";
 import Seller from "./pages/seller/Seller";
+import AddSeller from "./pages/seller/AddSeller";
 import Merchant from "./pages/merchant/Merchant";
 
 //Web pages
@@ -58,8 +59,8 @@ function App() {
           element={<ServiceLeadDetails />}
         ></Route>
         <Route path="/seller" element={<Seller />}></Route>
+        <Route path="/addseller" element={<AddSeller />}></Route>
         <Route path="/merchant" element={<Merchant />}></Route>
-       
       </Routes>
     </Router>
   );
