@@ -257,13 +257,15 @@ export default function Navbar() {
                 </Link>
               </li>
               <li className="menu-title">
-                <span>Seller Management</span>
+                <span>Seller Onboarding</span>
               </li>
               <li>
                 <Link to="/seller">
-                  <i className="fe fe-user"></i> <span>Seller</span>
+                  <img src="/assets/icons/onboarding.png" alt="Module Icon" />{" "}
+                  <span>Seller</span>
                 </Link>
               </li>
+
               {/* <li>
                 <a href="#">
                   <i className="fe fe-clipboard"></i>{" "}
@@ -282,8 +284,120 @@ export default function Navbar() {
               </li>
               <li>
                 <Link to="/franchisee">
-                  <i className="fe fe-user"></i> <span>Franchisee</span>
+                  <img src="/assets/icons/franchise.png" />{" "}
+                  <span>Franchisee</span>
                 </Link>
+              </li>
+
+              <li className="menu-title">
+                <span>Pramotion Management </span>
+              </li>
+
+              <li className="submenu">
+                <Link to="/banner">
+                  <img src="/assets/icons/franchise.png" /> <span>Banners</span>
+                </Link>
+                <ul style={{ display: "none" }}>
+                  <li>
+                    <Link to="/banner">
+                      <img src="/assets/icons/franchise.png" />{" "}
+                      <span>Banner List</span>
+                    </Link>
+                  </li>
+                  <li>
+                    <Link to="/addbanner">
+                      <img src="/assets/icons/franchise.png" />{" "}
+                      <span>Add Banner</span>
+                    </Link>
+                  </li>
+                </ul>
+              </li>
+
+              <li className="submenu">
+                <Link to="/coupon">
+                  <img src="/assets/icons/franchise.png" /> <span>Coupons</span>
+                </Link>
+                <ul style={{ display: "none" }}>
+                  <li>
+                    <Link to="/coupon">
+                      <img src="/assets/icons/franchise.png" />{" "}
+                      <span>Coupon List</span>
+                    </Link>
+                  </li>
+                  <li>
+                    <Link to="/addcoupon">
+                      <img src="/assets/icons/franchise.png" />{" "}
+                      <span>Add Coupon</span>
+                    </Link>
+                  </li>
+                </ul>
+              </li>
+
+              <li className="submenu">
+                <Link to="/cashback">
+                  <img src="/assets/icons/franchise.png" /> <span>Cashback</span>
+                </Link>
+                <ul style={{ display: "none" }}>
+                  <li>
+                    <Link to="/cashback">
+                      <img src="/assets/icons/franchise.png" />{" "}
+                      <span>Cashback List</span>
+                    </Link>
+                  </li>
+                  <li>
+                    <Link to="/addcashback">
+                      <img src="/assets/icons/franchise.png" />{" "}
+                      <span>Add Cashback</span>
+                    </Link>
+                  </li>
+                </ul>
+              </li>
+
+              <li className="submenu">
+                <Link to="/pushnotification">
+                  <img src="/assets/icons/franchise.png" /> <span>Push Notification</span>
+                </Link>
+                <ul style={{ display: "none" }}>
+                  <li>
+                    <Link to="/pushnotification">
+                      <img src="/assets/icons/franchise.png" />{" "}
+                      <span>Notification List</span>
+                    </Link>
+                  </li>
+                  <li>
+                    <Link to="/addpushnotification">
+                      <img src="/assets/icons/franchise.png" />{" "}
+                      <span>Add Notification</span>
+                    </Link>
+                  </li>
+                </ul>
+              </li>
+
+              <li className="submenu">
+                <Link to="/advertisement">
+                  <img src="/assets/icons/franchise.png" />{" "}
+                  <span>Advertisement</span>
+                </Link>
+                <ul style={{ display: "none" }}>
+                  <li>
+                    <Link to="/advertisement">
+                      <img src="/assets/icons/franchise.png" />{" "}
+                      <span>Advertise List</span>
+                    </Link>
+                  </li>
+                  <li>
+                    <Link to="/addadvertisement">
+                      <img src="/assets/icons/franchise.png" />{" "}
+                      <span>New Advertisement</span>
+                    </Link>
+                  </li>
+                  <li>
+                    <Link to="/requestadvertisement">
+                      <img src="/assets/icons/franchise.png" />{" "}
+                      <span>Advertise Request</span>
+                    </Link>
+                  </li>
+                </ul>
               </li>
 
               <li className="menu-title">
@@ -291,22 +405,32 @@ export default function Navbar() {
               </li>
               <li>
                 <Link to="/module">
-                  <i className="fe fe-user"></i> <span>Module</span>
+                  <img src="/assets/icons/modules.png" alt="Module Icon" />
+                  <span>Module</span>
                 </Link>
               </li>
               <li>
                 <Link to="/category">
-                  <i className="fe fe-user"></i> <span>Category</span>
+                  <img src="/assets/icons/category.png" alt="Module Icon" />
+                  <span>Category</span>
                 </Link>
               </li>
               <li>
                 <Link to="/subcategory">
-                  <i className="fe fe-user"></i> <span>Sub-category</span>
+                  <img
+                    src="/assets/icons/categorization.png"
+                    alt="Module Icon"
+                  />{" "}
+                  <span>Sub-category</span>
                 </Link>
               </li>
               <li>
                 <Link to="/servicetab">
-                  <i className="fe fe-user"></i> <span>Services</span>
+                  <img
+                    src="/assets/icons/customer-service.png"
+                    alt="Module Icon"
+                  />
+                  <span>Services</span>
                 </Link>
               </li>
 
@@ -321,7 +445,7 @@ export default function Navbar() {
 
               <li>
                 <Link to="/merchant">
-                  <i className="fe fe-user"></i>{" "}
+                  <img src="/assets/icons/businessman.png" alt="Module Icon" />{" "}
                   <span>Merchant Onboarding</span>
                 </Link>
               </li>
@@ -336,7 +460,8 @@ export default function Navbar() {
               </li>
               <li>
                 <Link to="/demo">
-                  <i className="fe fe-user"></i> <span>Demo</span>
+                  <img src="/assets/icons/demonstration.png" />{" "}
+                  <span>Demo</span>
                 </Link>
               </li>
 
@@ -369,7 +494,7 @@ export default function Navbar() {
               </li>
               <li>
                 <a href="contact-messages.html">
-                  <i className="fe fe-printer"></i>{" "}
+                  <img src="/assets/icons/message.png" alt="Module Icon" />{" "}
                   <span>Contact Messages</span>
                 </a>
               </li>

@@ -18,6 +18,21 @@ import ServiceLeadDetails from "./pages/service/ServiceLeadDetails";
 import Seller from "./pages/seller/Seller";
 import AddSeller from "./pages/seller/AddSeller";
 import Merchant from "./pages/merchant/Merchant";
+import Advertisement from "./pages/advertisement/Advertisement";
+import AddAdvertisement from "./pages/advertisement/AddAdvertisement";
+import RequestAdvertisement from "./pages/advertisement/RequestAdvertise";
+import Banner from "./pages/banner/Banner";
+import AddBanner from "./pages/banner/AddBanner";
+import Coupon from "./pages/coupon/Coupon";
+import AddCoupon from "./pages/coupon/AddCoupon";
+import Cashback from "./pages/cashback/Cashback";
+import AddCashback from "./pages/cashback/AddCashback";
+import PushNotification from "./pages/pushnotification/PushNotification";
+import AddPushNotification from "./pages/pushnotification/AddPushNotification";
+import Packages from "./pages/packages/packages";
+
+import Udashboard from "./pages/Udashboard/Dashboard";
+
 
 //Web pages
 import Selleronboarding from "./Selleronboarding";
@@ -29,6 +44,8 @@ function App() {
       <Routes>
         <Route path="/" element={<Login />}></Route>
         <Route path="/dashboard" element={<Dashboard />}></Route>
+        
+        <Route path="/Udashboard" element={<Udashboard />}></Route>
         <Route path="/user" element={<User />}></Route>
         <Route path="/user-detail/:id" element={<User_Details />}></Route>
         <Route path="/franchisee" element={<Franchisee />}></Route>
@@ -61,6 +78,21 @@ function App() {
         <Route path="/seller" element={<Seller />}></Route>
         <Route path="/addseller" element={<AddSeller />}></Route>
         <Route path="/merchant" element={<Merchant />}></Route>
+        <Route path="/advertisement" element={<Advertisement />}></Route>
+        <Route path="/addadvertisement" element={<AddAdvertisement />}></Route>
+        <Route
+          path="/requestadvertisement"
+          element={<RequestAdvertisement />}
+        ></Route>
+        <Route path="/banner" element={<Banner />}></Route>
+        <Route path="/addbanner" element={<AddBanner />}></Route>
+        <Route path="/coupon" element={<Coupon />}></Route>
+        <Route path="/addcoupon" element={<AddCoupon />}></Route>
+        <Route path="/cashback" element={<Cashback />}></Route>
+        <Route path="/addcashback" element={<AddCashback />}></Route>
+        <Route path="/pushnotification" element={<PushNotification />}></Route>
+        <Route path="/addpushnotification" element={<AddPushNotification />}></Route>
+        <Route path="/packges" element={<Packages />}></Route>
       </Routes>
     </Router>
   );

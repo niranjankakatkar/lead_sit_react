@@ -13,6 +13,7 @@ export default function Login() {
         })
 
         const [username,setEmail]=useState();
+        const email=username;
         const [password,setPassword]=useState();
 
         const handInputChange=(event)=>{
@@ -31,12 +32,44 @@ export default function Login() {
                 .then(result=>{
                     
                     if(result.data.msg===""){
-                        toast.error('No Record Found', {
-                            position: "top-right",
-                            autoClose: 3000,
-                            theme: "colored",
-                            transition: Slide,
-                            });
+                      
+                        axios.post("http://43.205.22.150:5000/auth/login",{email,password})
+                        .then(result_=>{
+
+                            if(result_.data.msg===""){
+                                toast.error('No Record Found', {
+                                    position: "top-right",
+                                    autoClose: 3000,
+                                    theme: "colored",
+                                    transition: Slide,
+                                    });
+                            }
+                            if(result_.data.msg==="0"){
+                                toast.warning('Password Mismatch', {
+                                    position: "top-right",
+                                    autoClose: 3000,
+                                    theme: "colored",
+                                    transition: Slide,
+                                    });
+                            }
+                            if(result_.data.msg==="1"){
+                                toast.success('Login Successfully', {
+                                    position: "top-right",
+                                    autoClose: 3000,
+                                    theme: "colored",
+                                    transition: Slide,
+                                    });
+                                    console.log(result_);
+                                    localStorage.setItem("token", result_.data.id);
+                                    localStorage.setItem("loginID", result_.data.loginID);
+                                    navigate("/Udashboard");
+                            }
+                        })
+                        .catch(err=>{
+        
+                        })
+
+                       
                     }
                     if(result.data.msg==="0"){
                         toast.warning('Password Mismatch', {
