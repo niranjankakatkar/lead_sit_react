@@ -39,7 +39,7 @@ export default function AddBanner() {
     formData.append("file", file);
 
     axios
-      .post("http://localhost:5000/banner/createBannerImg", formData)
+      .post("http://43.205.22.150:5000/banner/createBannerImg", formData)
       .then(() => {
         toast.success("Record Added Successfully", {
           position: "top-right",
@@ -76,7 +76,7 @@ export default function AddBanner() {
           alignItems: "center",
           backgroundColor: "#f4f4f4",
           padding: "20px",
-          paddingTop: "0px",
+          paddingTop: "80px",
         }}
       >
         <form
@@ -87,6 +87,7 @@ export default function AddBanner() {
             borderRadius: "8px",
             padding: "30px",
             width: "100%",
+            height: "100vh",
             boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
           }}
         >

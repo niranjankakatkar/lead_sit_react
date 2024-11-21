@@ -227,7 +227,7 @@ export default function AddBanner() {
               </div>
             </div>
 
-            <div className="col-md-6">
+            <div className="col-md-3">
               <div className="input-block mb-3">
                 <label className="form-label">Discount Type</label>
                 <input
@@ -241,7 +241,7 @@ export default function AddBanner() {
               </div>
             </div>
 
-            <div className="col-md-6">
+            <div className="col-md-3">
               <div className="input-block mb-3">
                 <label className="form-label">Discount</label>
                 <input
@@ -255,7 +255,7 @@ export default function AddBanner() {
               </div>
             </div>
 
-            <div className="col-md-6">
+            <div className="col-md-3">
               <div className="input-block mb-3">
                 <label className="form-label">Max Discount</label>
                 <input
@@ -269,7 +269,7 @@ export default function AddBanner() {
               </div>
             </div>
 
-            <div className="col-md-6">
+            <div className="col-md-3">
               <div className="input-block mb-3">
                 <label className="form-label">Min Discount</label>
                 <input
@@ -283,9 +283,10 @@ export default function AddBanner() {
               </div>
             </div>
 
-            <div className="col-md-6">
+            <div className="col-md-3">
               <div className="input-block mb-3">
                 <label className="form-label">Start Date</label>
+                <br></br>
                 <DatePicker
                   selected={startdate}
                   onChange={(date) => setStartdate(date)}
@@ -296,9 +297,10 @@ export default function AddBanner() {
               </div>
             </div>
 
-            <div className="col-md-6">
+            <div className="col-md-3">
               <div className="input-block mb-3">
                 <label className="form-label">End Date</label>
+                <br></br>
                 <DatePicker
                   selected={enddate}
                   onChange={(date) => setEnddate(date)}

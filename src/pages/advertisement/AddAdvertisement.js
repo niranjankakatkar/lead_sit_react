@@ -48,7 +48,7 @@ export default function AddAdvertisement() {
 
     axios
       .post(
-        "http://localhost:5000/advertisement/createAdvertisementImg",
+        "http://43.205.22.150:5000/advertisement/createAdvertisementImg",
         formData
       )
       .then(() => {
@@ -84,7 +84,7 @@ export default function AddAdvertisement() {
           alignItems: "center",
           backgroundColor: "#f4f4f4",
           padding: "20px",
-          paddingTop: "100px",
+          paddingTop: "80px",
         }}
       >
         <form
@@ -95,6 +95,7 @@ export default function AddAdvertisement() {
             borderRadius: "8px",
             padding: "30px",
             width: "100%",
+            height: "100vh",
             boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
           }}
         >

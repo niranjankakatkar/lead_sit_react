@@ -86,7 +86,7 @@ export default function AddCashback() {
           alignItems: "center",
           backgroundColor: "#f4f4f4",
           padding: "20px",
-          paddingTop: "100px",
+          paddingTop: "80px",
         }}
       >
         <form
@@ -97,6 +97,7 @@ export default function AddCashback() {
             borderRadius: "8px",
             padding: "30px",
             width: "100%",
+            height: "100vh",
             boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
           }}
         >
@@ -219,9 +220,9 @@ export default function AddCashback() {
               </div>
             </div>
 
-            <div className="col-md-6">
+            <div className="col-md-3">
               <div className="input-block mb-3">
-                <label className="form-label">Start Date</label>
+                <label className="form-label">Start Date</label><br></br>
                 <DatePicker
                   selected={startdate}
                   onChange={(date) => setStartdate(date)}
@@ -232,9 +233,9 @@ export default function AddCashback() {
               </div>
             </div>
 
-            <div className="col-md-6">
+            <div className="col-md-3">
               <div className="input-block mb-3">
-                <label className="form-label">End Date</label>
+                <label className="form-label">End Date</label><br></br>
                 <DatePicker
                   selected={enddate}
                   onChange={(date) => setEnddate(date)}

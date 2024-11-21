@@ -79,7 +79,7 @@ export default function AddPushNotification() {
           alignItems: "center",
           backgroundColor: "#f4f4f4",
           padding: "20px",
-          paddingTop: "0px",
+          paddingTop: "80px",
         }}
       >
         <form
@@ -89,6 +89,7 @@ export default function AddPushNotification() {
             backgroundColor: "white",
             borderRadius: "8px",
             padding: "30px",
+            height: "100vh",
             width: "100%",
             boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
           }}
