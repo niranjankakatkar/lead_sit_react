@@ -3232,7 +3232,7 @@ span.select2-container.select2-container--default.select2-container--open {
 }
 
 .sidebar {
-  background-color: #fff;
+  background-color: #3e3e3e;
   bottom: 0;
   left: 0;
   margin-top: 0;
@@ -3382,7 +3382,7 @@ span.select2-container.select2-container--default.select2-container--open {
 .sidebar .sidebar-menu ul li a {
   padding: 8px 25px;
   position: relative;
-  color: #3F4254;
+  color: #FFF;
 }
 @media (max-width: 1199.98px) {
   .sidebar .sidebar-menu ul li a {
