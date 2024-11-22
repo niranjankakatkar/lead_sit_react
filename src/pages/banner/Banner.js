@@ -239,7 +239,7 @@ export default function Banner() {
                     <div className="card-body">
                       <div className="grid-info-item total-items">
                         <div className="grid-info">
-                          <span>Total Advertise</span>
+                          <span>Total Banners</span>
                           <h4>{allCount}</h4>
                         </div>
                         <div className="grid-head-icon">
@@ -254,7 +254,7 @@ export default function Banner() {
                     <div className="card-body">
                       <div className="grid-info-item active-items">
                         <div className="grid-info">
-                          <span>Active Advertise</span>
+                          <span>Active Banners</span>
                           <h4>{activeCount}</h4>
                         </div>
                         <div className="grid-head-icon">
@@ -269,7 +269,7 @@ export default function Banner() {
                     <div className="card-body">
                       <div className="grid-info-item inactive-items">
                         <div className="grid-info">
-                          <span>Inactive Advertise</span>
+                          <span>Inactive Banners</span>
                           <h4>{inactiveCount}</h4>
                         </div>
                         <div className="grid-head-icon">
@@ -284,7 +284,7 @@ export default function Banner() {
                     <div className="card-body">
                       <div className="grid-info-item location-info">
                         <div className="grid-info">
-                          <span>Advertise Locations</span>
+                          <span>Banner Locations</span>
                           <h4>0</h4>
                         </div>
                         <div className="grid-head-icon">

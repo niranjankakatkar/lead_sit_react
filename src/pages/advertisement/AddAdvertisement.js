@@ -1,6 +1,6 @@
 import { Button, FormControlLabel, Switch } from "@mui/material";
 import axios from "axios";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Slide, toast } from "react-toastify";
 import Navbar from "../Navbar";
@@ -8,6 +8,9 @@ import Navbar from "../Navbar";
 export default function AddAdvertisement() {
   const navigate = useNavigate();
 
+  const [moduleId, setModuleId] = useState("");
+  const [categoryId, setCategoryId] = useState("");
+  const [subcategoryId, setSubcategoryId] = useState("");
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [seller, setSeller] = useState("");
@@ -19,6 +22,43 @@ export default function AddAdvertisement() {
   const [activeFlag, setActiveFlag] = useState(true);
   const [file, setFile] = useState(null);
   const [imagePreview, setImagePreview] = useState(null);
+
+  const [modules, setModules] = useState([]);
+  const [categories, setCategories] = useState([]);
+  const [subcategories, setSubCategories] = useState([]);
+  const [filteredCategories, setFilteredCategories] = useState([]);
+
+  useEffect(() => {
+    axios
+      .get("http://43.205.22.150:5000/subcategory/getAllSubcategory")
+      .then((res) => setSubCategories(res.data))
+      .catch((err) => console.error(err));
+
+    axios
+      .get("http://43.205.22.150:5000/module/getAllModule")
+      .then((res) => setModules(res.data))
+      .catch((err) => console.error(err));
+
+    axios
+      .get("http://43.205.22.150:5000/category/getAllCategory")
+      .then((res) => {
+        setCategories(res.data);
+      })
+      .catch((err) => console.error(err));
+  }, []);
+
+  useEffect(() => {
+    if (moduleId) {
+      axios
+        .get(
+          `http://43.205.22.150:5000/category/getCategoriesByModule/${moduleId}`
+        )
+        .then((res) => setFilteredCategories(res.data))
+        .catch((err) => console.error(err));
+    } else {
+      setFilteredCategories([]);
+    }
+  }, [moduleId]);
 
   const handleFileChange = (e) => {
     const selectedFile = e.target.files[0];
@@ -36,6 +76,9 @@ export default function AddAdvertisement() {
   const handleSubmit = (e) => {
     e.preventDefault();
     const formData = new FormData();
+    formData.append("moduleId", moduleId);
+    formData.append("categoryId", categoryId);
+    formData.append("subcategoryId", subcategoryId);
     formData.append("title", title);
     formData.append("description", description);
     formData.append("seller", seller);
@@ -48,7 +91,7 @@ export default function AddAdvertisement() {
 
     axios
       .post(
-        "http://43.205.22.150:5000/advertisement/createAdvertisementImg",
+        "http://localhost:5000/advertisement/createAdvertisementImg",
         formData
       )
       .then(() => {
@@ -84,7 +127,7 @@ export default function AddAdvertisement() {
           alignItems: "center",
           backgroundColor: "#f4f4f4",
           padding: "20px",
-          paddingTop: "80px",
+          paddingTop: "100px",
         }}
       >
         <form
@@ -95,7 +138,6 @@ export default function AddAdvertisement() {
             borderRadius: "8px",
             padding: "30px",
             width: "100%",
-            height: "100vh",
             boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
           }}
         >
@@ -136,6 +178,60 @@ export default function AddAdvertisement() {
 
             <div className="col-md-6">
               <div className="input-block mb-3">
+                <label className="form-label">Module Name</label>
+                <select
+                  className="form-control"
+                  value={moduleId}
+                  onChange={(e) => setModuleId(e.target.value)}
+                >
+                  <option value="">Select Module</option>
+                  {modules.map((module) => (
+                    <option key={module._id} value={module._id}>
+                      {module.module}
+                    </option>
+                  ))}
+                </select>
+              </div>
+            </div>
+
+            <div className="col-md-6">
+              <div className="input-block mb-3">
+                <label className="form-label">Category Name</label>
+                <select
+                  className="form-control"
+                  value={categoryId}
+                  onChange={(e) => setCategoryId(e.target.value)}
+                >
+                  <option value="">Select Category</option>
+                  {filteredCategories.map((category) => (
+                    <option key={category._id} value={category._id}>
+                      {category.category}
+                    </option>
+                  ))}
+                </select>
+              </div>
+            </div>
+
+            <div className="col-md-6">
+              <div className="input-block mb-3">
+                <label className="form-label">Subcategory Name</label>
+                <select
+                  className="form-control"
+                  value={subcategoryId}
+                  onChange={(e) => setSubcategoryId(e.target.value)}
+                >
+                  <option value="">Select Subcategory</option>
+                  {subcategories.map((subcategory) => (
+                    <option key={subcategory._id} value={subcategory._id}>
+                      {subcategory.subcategory}
+                    </option>
+                  ))}
+                </select>
+              </div>
+            </div>
+
+            <div className="col-md-6">
+              <div className="input-block mb-3">
                 <label className="form-label">Title Name</label>
                 <input
                   type="text"
@@ -158,6 +254,20 @@ export default function AddAdvertisement() {
                   name="seller"
                   value={seller}
                   onChange={(e) => setSeller(e.target.value)}
+                />
+              </div>
+            </div>
+
+            <div className="col-md-6">
+              <div className="input-block mb-3">
+                <label className="form-label">Type</label>
+                <input
+                  type="text"
+                  className="form-control"
+                  placeholder="Enter Type"
+                  name="type"
+                  value={type}
+                  onChange={(e) => setType(e.target.value)}
                 />
               </div>
             </div>
@@ -190,19 +300,7 @@ export default function AddAdvertisement() {
               </div>
             </div>
 
-            <div className="col-md-6">
-              <div className="input-block mb-3">
-                <label className="form-label">Type</label>
-                <input
-                  type="text"
-                  className="form-control"
-                  placeholder="Enter Type"
-                  name="type"
-                  value={type}
-                  onChange={(e) => setType(e.target.value)}
-                />
-              </div>
-            </div>
+           
 
             <div className="col-md-6">
               <div className="input-block mb-3">

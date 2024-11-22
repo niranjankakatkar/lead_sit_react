@@ -1,60 +1,37 @@
 import { Button, FormControlLabel, Switch } from "@mui/material";
 import axios from "axios";
-import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { useNavigate, useParams } from "react-router-dom";
 import { Slide, toast } from "react-toastify";
 import Navbar from "../Navbar";
 
-export default function AddPushNotification() {
+export default function UpdateBanner() {
   const navigate = useNavigate();
+  const { id } = useParams(); // Fetch the banner ID from the route params
 
-  const [moduleId, setModuleId] = useState("");
-  const [categoryId, setCategoryId] = useState("");
-  const [subcategoryId, setSubcategoryId] = useState("");
   const [title, setTitle] = useState("");
   const [zone, setZone] = useState("");
-  const [sendto, setSendto] = useState("");
-  const [description, setDescription] = useState("");
+  const [type, setType] = useState("");
+  const [seller, setSeller] = useState("");
   const [activeFlag, setActiveFlag] = useState(true);
   const [file, setFile] = useState(null);
   const [imagePreview, setImagePreview] = useState(null);
 
-  const [modules, setModules] = useState([]);
-  const [categories, setCategories] = useState([]);
-  const [subcategories, setSubCategories] = useState([]);
-  const [filteredCategories, setFilteredCategories] = useState([]);
-
   useEffect(() => {
+    // Fetch the banner data based on the ID to populate the form for updating
     axios
-      .get("http://43.205.22.150:5000/subcategory/getAllSubcategory")
-      .then((res) => setSubCategories(res.data))
-      .catch((err) => console.error(err));
-
-    axios
-      .get("http://43.205.22.150:5000/module/getAllModule")
-      .then((res) => setModules(res.data))
-      .catch((err) => console.error(err));
-
-    axios
-      .get("http://43.205.22.150:5000/category/getAllCategory")
-      .then((res) => {
-        setCategories(res.data);
+      .get(`http://localhost:5000/banner/${id}`)
+      .then((response) => {
+        const banner = response.data;
+        setTitle(banner.title);
+        setZone(banner.zone);
+        setType(banner.type);
+        setSeller(banner.seller);
+        setActiveFlag(banner.activeFlag);
+        setImagePreview(banner.imageUrl); // Assuming the existing image URL is in imageUrl
       })
-      .catch((err) => console.error(err));
-  }, []);
-
-  useEffect(() => {
-    if (moduleId) {
-      axios
-        .get(
-          `http://43.205.22.150:5000/category/getCategoriesByModule/${moduleId}`
-        )
-        .then((res) => setFilteredCategories(res.data))
-        .catch((err) => console.error(err));
-    } else {
-      setFilteredCategories([]);
-    }
-  }, [moduleId]);
+      .catch((err) => console.error("Error fetching banner:", err));
+  }, [id]);
 
   const handleFileChange = (e) => {
     const selectedFile = e.target.files[0];
@@ -72,31 +49,23 @@ export default function AddPushNotification() {
   const handleSubmit = (e) => {
     e.preventDefault();
     const formData = new FormData();
-    formData.append("moduleId", moduleId);
-    formData.append("categoryId", categoryId);
-    formData.append("subcategoryId", subcategoryId);
     formData.append("title", title);
     formData.append("zone", zone);
-    formData.append("sendto", sendto);
-    formData.append("description", description);
-    formData.append("file", file);
+    formData.append("type", type);
+    formData.append("seller", seller);
+    formData.append("activeFlag", activeFlag);
+    if (file) formData.append("file", file);
 
     axios
-      .post(
-        "http://localhost:5000/pushnotification/createPushNotificationImg",
-        formData
-      )
+      .put(`http://localhost:5000/banner/updateSingleBanner/${id}`, formData)
       .then(() => {
-        toast.success("Record Added Successfully", {
+        toast.success("Banner Updated Successfully", {
           position: "top-right",
           autoClose: 3000,
           theme: "colored",
           transition: Slide,
         });
-        navigate("/addpushnotification");
-        setTimeout(() => {
-          window.location.reload();
-        }, 4000);
+        navigate("/banner");
       })
       .catch(() => {
         toast.error("Something went wrong", {
@@ -122,7 +91,7 @@ export default function AddPushNotification() {
           alignItems: "center",
           backgroundColor: "#f4f4f4",
           padding: "20px",
-          paddingTop: "80px",
+          paddingTop: "0px",
         }}
       >
         <form
@@ -133,7 +102,6 @@ export default function AddPushNotification() {
             borderRadius: "8px",
             padding: "30px",
             width: "100%",
-            height: "100vh",
             boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
           }}
         >
@@ -174,66 +142,11 @@ export default function AddPushNotification() {
 
             <div className="col-md-6">
               <div className="input-block mb-3">
-                <label className="form-label">Module Name</label>
-                <select
-                  className="form-control"
-                  value={moduleId}
-                  onChange={(e) => setModuleId(e.target.value)}
-                >
-                  <option value="">Select Module</option>
-                  {modules.map((module) => (
-                    <option key={module._id} value={module._id}>
-                      {module.module}
-                    </option>
-                  ))}
-                </select>
-              </div>
-            </div>
-
-            <div className="col-md-6">
-              <div className="input-block mb-3">
-                <label className="form-label">Category Name</label>
-                <select
-                  className="form-control"
-                  value={categoryId}
-                  onChange={(e) => setCategoryId(e.target.value)}
-                >
-                  <option value="">Select Category</option>
-                  {filteredCategories.map((category) => (
-                    <option key={category._id} value={category._id}>
-                      {category.category}
-                    </option>
-                  ))}
-                </select>
-              </div>
-            </div>
-
-            <div className="col-md-6">
-              <div className="input-block mb-3">
-                <label className="form-label">Subcategory Name</label>
-                <select
-                  className="form-control"
-                  value={subcategoryId}
-                  onChange={(e) => setSubcategoryId(e.target.value)}
-                >
-                  <option value="">Select Subcategory</option>
-                  {subcategories.map((subcategory) => (
-                    <option key={subcategory._id} value={subcategory._id}>
-                      {subcategory.subcategory}
-                    </option>
-                  ))}
-                </select>
-              </div>
-            </div>
-
-            <div className="col-md-6">
-              <div className="input-block mb-3">
                 <label className="form-label">Title Name</label>
                 <input
                   type="text"
                   className="form-control"
                   placeholder="Enter Title"
-                  name="title"
                   value={title}
                   onChange={(e) => setTitle(e.target.value)}
                 />
@@ -246,8 +159,7 @@ export default function AddPushNotification() {
                 <input
                   type="text"
                   className="form-control"
-                  placeholder="Enter Review"
-                  name="zone"
+                  placeholder="Enter Zone"
                   value={zone}
                   onChange={(e) => setZone(e.target.value)}
                 />
@@ -256,14 +168,13 @@ export default function AddPushNotification() {
 
             <div className="col-md-6">
               <div className="input-block mb-3">
-                <label className="form-label">Send to</label>
+                <label className="form-label">Type</label>
                 <input
                   type="text"
                   className="form-control"
                   placeholder="Enter Type"
-                  name="sendto"
-                  value={sendto}
-                  onChange={(e) => setSendto(e.target.value)}
+                  value={type}
+                  onChange={(e) => setType(e.target.value)}
                 />
               </div>
             </div>
@@ -275,14 +186,12 @@ export default function AddPushNotification() {
                   type="text"
                   className="form-control"
                   placeholder="Enter Seller"
-                  name="description"
-                  value={description}
-                  onChange={(e) => setDescription(e.target.value)}
+                  value={seller}
+                  onChange={(e) => setSeller(e.target.value)}
                 />
               </div>
             </div>
 
-            {/* Active Flag */}
             <div className="col-md-12">
               <div className="input-block mb-3">
                 <FormControlLabel
@@ -297,14 +206,13 @@ export default function AddPushNotification() {
               </div>
             </div>
 
-            {/* Submit Button */}
             <div
               className="col-md-12"
               style={{ display: "flex", justifyContent: "center" }}
             >
               <div className="input-block">
                 <Button type="submit" variant="contained" color="primary">
-                  Submit
+                  Update Banner
                 </Button>
               </div>
             </div>

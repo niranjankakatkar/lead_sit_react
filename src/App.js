@@ -32,6 +32,7 @@ import AddPushNotification from "./pages/pushnotification/AddPushNotification";
 import Packages from "./pages/packages/packages";
 
 import Udashboard from "./pages/Udashboard/Dashboard";
+import Sdashboard from "./pages/Sdashboard/Dashboard";
 
 
 //Web pages
@@ -46,6 +47,7 @@ function App() {
         <Route path="/dashboard" element={<Dashboard />}></Route>
         
         <Route path="/Udashboard" element={<Udashboard />}></Route>
+        <Route path="/Sdashboard" element={<Sdashboard />}></Route>
         <Route path="/user" element={<User />}></Route>
         <Route path="/user-detail/:id" element={<User_Details />}></Route>
         <Route path="/franchisee" element={<Franchisee />}></Route>

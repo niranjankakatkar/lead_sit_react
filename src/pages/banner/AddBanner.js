@@ -1,6 +1,12 @@
-import { Button, FormControlLabel, Switch } from "@mui/material";
+import {
+  Autocomplete,
+  Button,
+  FormControlLabel,
+  Switch,
+  TextField,
+} from "@mui/material";
 import axios from "axios";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Slide, toast } from "react-toastify";
 import Navbar from "../Navbar";
@@ -8,6 +14,9 @@ import Navbar from "../Navbar";
 export default function AddBanner() {
   const navigate = useNavigate();
 
+  const [moduleId, setModuleId] = useState("");
+  const [categoryId, setCategoryId] = useState("");
+  const [subcategoryId, setSubcategoryId] = useState("");
   const [title, setTitle] = useState("");
   const [zone, setZone] = useState("");
   const [type, setType] = useState("");
@@ -15,6 +24,56 @@ export default function AddBanner() {
   const [activeFlag, setActiveFlag] = useState(true);
   const [file, setFile] = useState(null);
   const [imagePreview, setImagePreview] = useState(null);
+
+  const [modules, setModules] = useState([]);
+  const [categories, setCategories] = useState([]);
+  const [subcategories, setSubCategories] = useState([]);
+  const [filteredCategories, setFilteredCategories] = useState([]);
+
+  useEffect(() => {
+    axios
+      .get("http://43.205.22.150:5000/subcategory/getAllSubcategory")
+      .then((res) => setSubCategories(res.data))
+      .catch((err) => console.error(err));
+
+    axios
+      .get("http://43.205.22.150:5000/module/getAllModule")
+      .then((res) => setModules(res.data))
+      .catch((err) => console.error(err));
+
+    axios
+      .get("http://43.205.22.150:5000/category/getAllCategory")
+      .then((res) => {
+        setCategories(res.data);
+      })
+      .catch((err) => console.error(err));
+  }, []);
+
+  useEffect(() => {
+    if (moduleId) {
+      axios
+        .get(
+          `http://43.205.22.150:5000/category/getCategoriesByModule/${moduleId}`
+        )
+        .then((res) => setFilteredCategories(res.data))
+        .catch((err) => console.error(err));
+    } else {
+      setFilteredCategories([]);
+    }
+  }, [moduleId]);
+
+  useEffect(() => {
+    if (categoryId) {
+      axios
+        .get(
+          `http://43.205.22.150:5000/category/getSubcategoriesByCategory/${categoryId}`
+        )
+        .then((res) => setFilteredCategories(res.data))
+        .catch((err) => console.error(err));
+    } else {
+      setFilteredCategories([]);
+    }
+  }, [categoryId]);
 
   const handleFileChange = (e) => {
     const selectedFile = e.target.files[0];
@@ -32,6 +91,9 @@ export default function AddBanner() {
   const handleSubmit = (e) => {
     e.preventDefault();
     const formData = new FormData();
+    formData.append("moduleId", moduleId);
+    formData.append("categoryId", categoryId);
+    formData.append("subcategoryId", subcategoryId);
     formData.append("title", title);
     formData.append("zone", zone);
     formData.append("type", type);
@@ -39,7 +101,7 @@ export default function AddBanner() {
     formData.append("file", file);
 
     axios
-      .post("http://43.205.22.150:5000/banner/createBannerImg", formData)
+      .post("http://localhost:5000/banner/createBannerImg", formData)
       .then(() => {
         toast.success("Record Added Successfully", {
           position: "top-right",
@@ -123,6 +185,60 @@ export default function AddBanner() {
                     </label>
                   </div>
                 </div>
+              </div>
+            </div>
+
+            <div className="col-md-6">
+              <div className="input-block mb-3">
+                <label className="form-label">Module Name</label>
+                <select
+                  className="form-control"
+                  value={moduleId}
+                  onChange={(e) => setModuleId(e.target.value)}
+                >
+                  <option value="">Select Module</option>
+                  {modules.map((module) => (
+                    <option key={module._id} value={module._id}>
+                      {module.module}
+                    </option>
+                  ))}
+                </select>
+              </div>
+            </div>
+
+            <div className="col-md-6">
+              <div className="input-block mb-3">
+                <label className="form-label">Category Name</label>
+                <select
+                  className="form-control"
+                  value={categoryId}
+                  onChange={(e) => setCategoryId(e.target.value)}
+                >
+                  <option value="">Select Category</option>
+                  {filteredCategories.map((category) => (
+                    <option key={category._id} value={category._id}>
+                      {category.category}
+                    </option>
+                  ))}
+                </select>
+              </div>
+            </div>
+
+            <div className="col-md-6">
+              <div className="input-block mb-3">
+                <label className="form-label">Subcategory Name</label>
+                <select
+                  className="form-control"
+                  value={subcategoryId}
+                  onChange={(e) => setSubcategoryId(e.target.value)}
+                >
+                  <option value="">Select Subcategory</option>
+                  {subcategories.map((subcategory) => (
+                    <option key={subcategory._id} value={subcategory._id}>
+                      {subcategory.subcategory}
+                    </option>
+                  ))}
+                </select>
               </div>
             </div>
 
