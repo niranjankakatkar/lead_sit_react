@@ -21,7 +21,7 @@ export default function User() {
 
   const { deletID } = useParams();
 
-  // Outer useEffect to fetch data
+  // Outer useEffect to  fetch data
   useEffect(() => {
     axios
       .get("http://43.205.22.150:5000/subcategory/getAllSubcategory")
