@@ -80,7 +80,7 @@ export default function Navbar() {
           </div>
         </div>
 
-        <a href="javascript:void(0);" id="toggle_btn">
+        <a href="#" id="toggle_btn">
           <span className="toggle-bars">
             <span className="bar-icons"></span>
             <span className="bar-icons"></span>
@@ -122,7 +122,7 @@ export default function Navbar() {
                 return (
                   <a
                     key={index}
-                    href="javascript:void(0);"
+                    href="#"
                     className="dropdown-item"
                   >
                     <img
@@ -168,7 +168,7 @@ export default function Navbar() {
             </div>
           </li>
           <li className="nav-item  has-arrow dropdown-heads ">
-            <a href="javascript:void(0);" className="win-maximize">
+            <a href="#" className="win-maximize">
               <i className="fe fe-maximize"></i>
             </a>
           </li>
@@ -244,7 +244,7 @@ export default function Navbar() {
               </li>
               <li>
                 <Link to="/dashboard">
-                <i class="fa-solid fa-house"></i> <span>Dashboard</span>
+                <i className="fa-solid fa-house"></i> <span>Dashboard</span>
                 </Link>
               </li>
 
@@ -253,7 +253,7 @@ export default function Navbar() {
               </li>
               <li>
                 <Link to="/user">
-                <i class="fa-solid fa-user"></i> <span>Users</span>
+                <i className="fa-solid fa-user"></i> <span>Users</span>
                 </Link>
               </li>
               <li className="menu-title">
@@ -261,7 +261,7 @@ export default function Navbar() {
               </li>
               <li>
                 <Link to="/seller">
-                <i class="fa-solid fa-business-time"></i>
+                <i className="fa-solid fa-business-time"></i>
                   <span>Seller</span>
                 </Link>
               </li>
@@ -284,7 +284,7 @@ export default function Navbar() {
               </li>
               <li>
                 <Link to="/franchisee">
-                <i class="fa-solid fa-layer-group"></i>
+                <i className="fa-solid fa-layer-group"></i>
                   <span>Franchisee</span>
                 </Link>
               </li>
@@ -295,7 +295,7 @@ export default function Navbar() {
 
               <li className="submenu">
                 <Link to="/banner">
-                <i class="fa-solid fa-tablet-screen-button"></i>
+                <i className="fa-solid fa-tablet-screen-button"></i>
                 <span>Banner</span>
                 </Link>
                 <ul style={{ display: "none" }}>
@@ -316,7 +316,7 @@ export default function Navbar() {
 
               <li className="submenu">
                 <Link to="/coupon">
-                <i class="fa-solid fa-ticket"></i> 
+                <i className="fa-solid fa-ticket"></i> 
                 <span>Coupons</span>
                 </Link>
                 <ul style={{ display: "none" }}>
@@ -337,19 +337,19 @@ export default function Navbar() {
 
               <li className="submenu">
                 <Link to="/cashback">
-                <i class="fa-solid fa-sack-dollar"></i>
+                <i className="fa-solid fa-sack-dollar"></i>
                  <span>Cashback</span>
                 </Link>
                 <ul style={{ display: "none" }}>
                   <li>
                     <Link to="/cashback">
-                    <i class="fa-solid fa-wallet"></i>
+                    <i className="fa-solid fa-wallet"></i>
                       <span>Cashback List</span>
                     </Link>
                   </li>
                   <li>
                     <Link to="/addcashback">
-                    <i class="fa-solid fa-clipboard-list"></i>
+                    <i className="fa-solid fa-clipboard-list"></i>
                       <span>Add Cashback</span>
                     </Link>
                   </li>
@@ -358,7 +358,7 @@ export default function Navbar() {
 
               <li className="submenu">
                 <Link to="/pushnotification">
-                <i class="fa-solid fa-bell"></i><span>Push Notification</span>
+                <i className="fa-solid fa-bell"></i><span>Push Notification</span>
                 </Link>
                 <ul style={{ display: "none" }}>
                   <li>
@@ -369,7 +369,7 @@ export default function Navbar() {
                   </li>
                   <li>
                     <Link to="/addpushnotification">
-                    <i class="fa-regular fa-circle-dot"></i>
+                    <i className="fa-regular fa-circle-dot"></i>
                       <span>Add Notification</span>
                     </Link>
                   </li>
@@ -378,25 +378,25 @@ export default function Navbar() {
 
               <li className="submenu">
                 <Link to="/advertisement">
-                <i class="fa-solid fa-video-slash"></i>
+                <i className="fa-solid fa-video-slash"></i>
                   <span>Advertisement</span>
                 </Link>
                 <ul style={{ display: "none" }}>
                   <li>
                     <Link to="/advertisement">
-                    <i class="fa-solid fa-video-slash"></i>
+                    <i className="fa-solid fa-video-slash"></i>
                       <span>Advertise List</span>
                     </Link>
                   </li>
                   <li>
                     <Link to="/addadvertisement">
-                    <i class="fa-solid fa-video-slash"></i>
+                    <i className="fa-solid fa-video-slash"></i>
                       <span>New Advertisement</span>
                     </Link>
                   </li>
                   <li>
                     <Link to="/requestadvertisement">
-                    <i class="fa-solid fa-person-circle-question"></i>
+                    <i className="fa-solid fa-person-circle-question"></i>
                       <span>Advertise Request</span>
                     </Link>
                   </li>
@@ -408,25 +408,25 @@ export default function Navbar() {
               </li>
               <li>
                 <Link to="/module">
-                <i class="fa-solid fa-table"></i>
+                <i className="fa-solid fa-table"></i>
                   <span>Module</span>
                 </Link>
               </li>
               <li>
                 <Link to="/category">
-                <i class="fa-solid fa-list"></i>
+                <i className="fa-solid fa-list"></i>
                   <span>Category</span>
                 </Link>
               </li>
               <li>
                 <Link to="/subcategory">
-                <i class="fa-solid fa-list"></i>
+                <i className="fa-solid fa-list"></i>
                   <span>Sub-category</span>
                 </Link>
               </li>
               <li>
                 <Link to="/servicetab">
-                <i class="fa-solid fa-server"></i>
+                <i className="fa-solid fa-server"></i>
                   <span>Services</span>
                 </Link>
               </li>
@@ -442,7 +442,7 @@ export default function Navbar() {
 
               <li>
                 <Link to="/merchant">
-                <i class="fa-solid fa-clapperboard"></i>
+                <i className="fa-solid fa-clapperboard"></i>
                   <span>Merchant Onboarding</span>
                 </Link>
               </li>
@@ -452,7 +452,7 @@ export default function Navbar() {
               </li>
               <li>
                 <Link to="/employee">
-                <i class="fa-solid fa-user"></i> <span>Employee</span>
+                <i className="fa-solid fa-user"></i> <span>Employee</span>
                 </Link>
               </li>
               <li>
@@ -491,13 +491,13 @@ export default function Navbar() {
               </li>
               <li>
                 <a href="contact-messages.html">
-                <i class="fa-solid fa-message"></i>
+                <i className="fa-solid fa-message"></i>
                   <span>Contact Messages</span>
                 </a>
               </li>
               <li className="submenu">
                 <a href="#">
-                <i class="fa-solid fa-file-invoice"></i> <span> Tickets</span>{" "}
+                <i className="fa-solid fa-file-invoice"></i> <span> Tickets</span>{" "}
                   <span className="menu-arrow"></span>
                 </a>
                 <ul style={{ display: "none" }}>
@@ -521,7 +521,7 @@ export default function Navbar() {
               </li>
               <li>
                 <a href="settings.html">
-                <i class="fa-solid fa-gear"></i><span>Settings</span>
+                <i className="fa-solid fa-gear"></i><span>Settings</span>
                 </a>
               </li>
               <li>
@@ -535,12 +535,12 @@ export default function Navbar() {
               </li>
               <li>
                 <a href="#">
-                <i class="fa-solid fa-file"></i> <span>Documentation</span>
+                <i className="fa-solid fa-file"></i> <span>Documentation</span>
                 </a>
               </li>
               <li>
-                <a href="javascript:void(0);">
-                <i class="fa-solid fa-lock"></i> <span>Change Log</span>{" "}
+                <a href="#">
+                <i className="fa-solid fa-lock"></i> <span>Change Log</span>{" "}
                   <span className="badge badge-primary ms-auto">v2.0.4</span>
                 </a>
               </li>

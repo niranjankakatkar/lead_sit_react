@@ -136,7 +136,7 @@ export default function Dashboard() {
                                                                         className="company-avatar avatar-md me-2 companies company-icon">
                                                                         <img className="avatar-img rounded-circle company"
                                                                             src="assets/img/companies/company-01.svg"
-                                                                            alt="Company Image"/></a>
+                                                                           /></a>
                                                                     <a href="companies.html">Hermann Groups <span
                                                                         className="plane-type">Basic (Monthly)</span></a>
                                                                 </h2>
@@ -152,7 +152,7 @@ export default function Dashboard() {
                                                                         className="company-avatar avatar-md me-2 companies company-icon">
                                                                         <img className="avatar-img rounded-circle company"
                                                                             src="assets/img/companies/company-02.svg"
-                                                                            alt="Company Image"/></a>
+                                                                           /></a>
                                                                     <a href="companies.html">Skiles LLC <span
                                                                         className="plane-type">Enterprise (Yearly)</span></a>
                                                                 </h2>
@@ -168,7 +168,7 @@ export default function Dashboard() {
                                                                         className="company-avatar avatar-md me-2 companies company-icon">
                                                                         <img className="avatar-img rounded-circle company"
                                                                             src="assets/img/companies/company-03.svg"
-                                                                            alt="Company Image"/></a>
+                                                                           /></a>
                                                                     <a href="companies.html">Kerluke Group <span
                                                                         className="plane-type">Advanced (Monthly)</span></a>
                                                                 </h2>
@@ -184,7 +184,7 @@ export default function Dashboard() {
                                                                         className="company-avatar avatar-md me-2 companies company-icon">
                                                                         <img className="avatar-img rounded-circle company"
                                                                             src="assets/img/companies/company-04.svg"
-                                                                            alt="Company Image"/></a>
+                                                                           /></a>
                                                                     <a href="companies.html">Schowalter Group <span
                                                                         className="plane-type">Basic (Yearly)</span></a>
                                                                 </h2>
@@ -200,7 +200,7 @@ export default function Dashboard() {
                                                                         className="company-avatar avatar-md me-2 companies company-icon">
                                                                         <img className="avatar-img rounded-circle company"
                                                                             src="assets/img/companies/company-05.svg"
-                                                                            alt="Company Image"/></a>
+                                                                           /></a>
                                                                     <a href="companies.html">Accentric Global <span
                                                                         className="plane-type">Basic (Monthly)</span></a>
                                                                 </h2>
@@ -230,13 +230,13 @@ export default function Dashboard() {
                                                         </button>
                                                         <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton">
                                                             <li>
-                                                                <a href="javascript:void(0);" className="dropdown-item">2023</a>
+                                                                <a href="#" className="dropdown-item">2023</a>
                                                             </li>
                                                             <li>
-                                                                <a href="javascript:void(0);" className="dropdown-item">2022</a>
+                                                                <a href="#" className="dropdown-item">2022</a>
                                                             </li>
                                                             <li>
-                                                                <a href="javascript:void(0);" className="dropdown-item">2021</a>
+                                                                <a href="#" className="dropdown-item">2021</a>
                                                             </li>
                                                         </ul>
                                                     </div>
@@ -261,13 +261,13 @@ export default function Dashboard() {
                                                     </button>
                                                     <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton2">
                                                         <li>
-                                                            <a href="javascript:void(0);" className="dropdown-item">Today</a>
+                                                            <a href="#" className="dropdown-item">Today</a>
                                                         </li>
                                                         <li>
-                                                            <a href="javascript:void(0);" className="dropdown-item">This Week</a>
+                                                            <a href="#" className="dropdown-item">This Week</a>
                                                         </li>
                                                         <li>
-                                                            <a href="javascript:void(0);" className="dropdown-item">This Year</a>
+                                                            <a href="#" className="dropdown-item">This Year</a>
                                                         </li>
                                                     </ul>
                                                 </div>
@@ -300,13 +300,13 @@ export default function Dashboard() {
                                                     </button>
                                                     <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton3">
                                                         <li>
-                                                            <a href="javascript:void(0);" className="dropdown-item">This Month</a>
+                                                            <a href="#" className="dropdown-item">This Month</a>
                                                         </li>
                                                         <li>
-                                                            <a href="javascript:void(0);" className="dropdown-item">This Week</a>
+                                                            <a href="#" className="dropdown-item">This Week</a>
                                                         </li>
                                                         <li>
-                                                            <a href="javascript:void(0);" className="dropdown-item">This Year</a>
+                                                            <a href="#" className="dropdown-item">This Year</a>
                                                         </li>
                                                     </ul>
                                                 </div>
@@ -337,13 +337,13 @@ export default function Dashboard() {
                                                     </button>
                                                     <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton4">
                                                         <li>
-                                                            <a href="javascript:void(0);" className="dropdown-item">This Month</a>
+                                                            <a href="#" className="dropdown-item">This Month</a>
                                                         </li>
                                                         <li>
-                                                            <a href="javascript:void(0);" className="dropdown-item">Today</a>
+                                                            <a href="#" className="dropdown-item">Today</a>
                                                         </li>
                                                         <li>
-                                                            <a href="javascript:void(0);" className="dropdown-item">This Year</a>
+                                                            <a href="#" className="dropdown-item">This Year</a>
                                                         </li>
                                                     </ul>
                                                 </div>
@@ -390,7 +390,7 @@ export default function Dashboard() {
                                                                         className="company-avatar avatar-md me-2 companies company-icon">
                                                                         <img className="avatar-img rounded-circle company"
                                                                             src="assets/img/companies/company-01.svg"
-                                                                            alt="Company Image"/>
+                                                                           />
                                                                     </a>
                                                                     <a href="companies.html">Hermann Groups</a>
                                                                 </h2>
@@ -413,7 +413,7 @@ export default function Dashboard() {
                                                                         className="company-avatar avatar-md me-2 companies company-icon">
                                                                         <img className="avatar-img rounded-circle company"
                                                                             src="assets/img/companies/company-02.svg"
-                                                                            alt="Company Image"/>
+                                                                           />
                                                                     </a>
                                                                     <a href="companies.html">Skiles LLC</a>
                                                                 </h2>
@@ -436,7 +436,7 @@ export default function Dashboard() {
                                                                         className="company-avatar avatar-md me-2 companies company-icon">
                                                                         <img className="avatar-img rounded-circle company"
                                                                             src="assets/img/companies/company-03.svg"
-                                                                            alt="Company Image"/>
+                                                                           />
                                                                     </a>
                                                                     <a href="companies.html">Kerluke Group</a>
                                                                 </h2>
@@ -459,7 +459,7 @@ export default function Dashboard() {
                                                                         className="company-avatar avatar-md me-2 companies company-icon">
                                                                         <img className="avatar-img rounded-circle company"
                                                                             src="assets/img/companies/company-04.svg"
-                                                                            alt="Company Image"/>
+                                                                           />
                                                                     </a>
                                                                     <a href="companies.html">Schowalter Group</a>
                                                                 </h2>
@@ -482,7 +482,7 @@ export default function Dashboard() {
                                                                         className="company-avatar avatar-md me-2 companies company-icon">
                                                                         <img className="avatar-img rounded-circle company"
                                                                             src="assets/img/companies/company-05.svg"
-                                                                            alt="Company Image"/>
+                                                                           />
                                                                     </a>
                                                                     <a href="companies.html">Accentric Global</a>
                                                                 </h2>
@@ -540,7 +540,7 @@ export default function Dashboard() {
                                                                         className="company-avatar avatar-md me-2 companies company-icon">
                                                                         <img className="avatar-img rounded-circle company"
                                                                             src="assets/img/companies/company-01.svg"
-                                                                            alt="Company Image"/></a>
+                                                                           /></a>
                                                                     <a href="companies.html">Hermann Groups <span
                                                                         className="plane-type">Basic (Monthly)</span></a>
                                                                 </h2>
@@ -554,7 +554,7 @@ export default function Dashboard() {
                                                                         className="company-avatar avatar-md me-2 companies company-icon">
                                                                         <img className="avatar-img rounded-circle company"
                                                                             src="assets/img/companies/company-02.svg"
-                                                                            alt="Company Image"/></a>
+                                                                           /></a>
                                                                     <a href="companies.html">Skiles LLC <span
                                                                         className="plane-type">Enterprise (Yearly)</span></a>
                                                                 </h2>
@@ -568,7 +568,7 @@ export default function Dashboard() {
                                                                         className="company-avatar avatar-md me-2 companies company-icon">
                                                                         <img className="avatar-img rounded-circle company"
                                                                             src="assets/img/companies/company-03.svg"
-                                                                            alt="Company Image"/></a>
+                                                                           /></a>
                                                                     <a href="companies.html">Kerluke Group <span
                                                                         className="plane-type">Advanced (Monthly)</span></a>
                                                                 </h2>
@@ -582,7 +582,7 @@ export default function Dashboard() {
                                                                         className="company-avatar avatar-md me-2 companies company-icon">
                                                                         <img className="avatar-img rounded-circle company"
                                                                             src="assets/img/companies/company-04.svg"
-                                                                            alt="Company Image"/></a>
+                                                                           /></a>
                                                                     <a href="companies.html">Schowalter Group <span
                                                                         className="plane-type">Basic (Yearly)</span></a>
                                                                 </h2>
@@ -596,7 +596,7 @@ export default function Dashboard() {
                                                                         className="company-avatar avatar-md me-2 companies company-icon">
                                                                         <img className="avatar-img rounded-circle company"
                                                                             src="assets/img/companies/company-05.svg"
-                                                                            alt="Company Image"/></a>
+                                                                           /></a>
                                                                     <a href="companies.html">Accentric Global <span
                                                                         className="plane-type">Basic (Monthly)</span></a>
                                                                 </h2>
@@ -622,13 +622,13 @@ export default function Dashboard() {
                                                     </button>
                                                     <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton5">
                                                         <li>
-                                                            <a href="javascript:void(0);" className="dropdown-item">2023</a>
+                                                            <a href="#" className="dropdown-item">2023</a>
                                                         </li>
                                                         <li>
-                                                            <a href="javascript:void(0);" className="dropdown-item">2022</a>
+                                                            <a href="#" className="dropdown-item">2022</a>
                                                         </li>
                                                         <li>
-                                                            <a href="javascript:void(0);" className="dropdown-item">2021</a>
+                                                            <a href="#" className="dropdown-item">2021</a>
                                                         </li>
                                                     </ul>
                                                 </div>
@@ -659,7 +659,7 @@ export default function Dashboard() {
                                                                         className="company-avatar avatar-md me-2 companies company-icon">
                                                                         <img className="avatar-img rounded-circle company"
                                                                             src="assets/img/companies/company-01.svg"
-                                                                            alt="Company Image"/></a>
+                                                                           /></a>
                                                                     <a href="companies.html">Hermann Groups <span
                                                                         className="plane-type">Basic (Monthly)</span></a>
                                                                 </h2>
@@ -680,7 +680,7 @@ export default function Dashboard() {
                                                                         className="company-avatar avatar-md me-2 companies company-icon">
                                                                         <img className="avatar-img rounded-circle company"
                                                                             src="assets/img/companies/company-02.svg"
-                                                                            alt="Company Image"/></a>
+                                                                           /></a>
                                                                     <a href="companies.html">Skiles LLC <span
                                                                         className="plane-type">Enterprise (Yearly)</span></a>
                                                                 </h2>
@@ -701,7 +701,7 @@ export default function Dashboard() {
                                                                         className="company-avatar avatar-md me-2 companies company-icon">
                                                                         <img className="avatar-img rounded-circle company"
                                                                             src="assets/img/companies/company-03.svg"
-                                                                            alt="Company Image"/></a>
+                                                                           /></a>
                                                                     <a href="companies.html">Kerluke Group <span
                                                                         className="plane-type">Advanced (Monthly)</span></a>
                                                                 </h2>
@@ -722,7 +722,7 @@ export default function Dashboard() {
                                                                         className="company-avatar avatar-md me-2 companies company-icon">
                                                                         <img className="avatar-img rounded-circle company"
                                                                             src="assets/img/companies/company-04.svg"
-                                                                            alt="Company Image"/></a>
+                                                                           /></a>
                                                                     <a href="companies.html">Schowalter Group <span
                                                                         className="plane-type">Basic (Yearly)</span></a>
                                                                 </h2>
@@ -743,7 +743,7 @@ export default function Dashboard() {
                                                                         className="company-avatar avatar-md me-2 companies company-icon">
                                                                         <img className="avatar-img rounded-circle company"
                                                                             src="assets/img/companies/company-05.svg"
-                                                                            alt="Company Image"/></a>
+                                                                           /></a>
                                                                     <a href="companies.html">Accentric Global <span
                                                                         className="plane-type">Basic (Monthly)</span></a>
                                                                 </h2>

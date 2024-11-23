@@ -500,12 +500,9 @@ export default function User() {
                                                                                             User Details</Link>
                                                                                     </li>
                                                                                     <li>
-                                                                                        <a className="dropdown-item"
-                                                                                            href="javascript:void(0);"
-                                                                                            onClick={getUserData(user._id)}
-                                                                                            data-bs-toggle="modal"
-                                                                                            data-bs-target="#edit_companies"><i
-                                                                                                className="fe fe-edit me-2"></i>Edit</a>
+                                                                                        <Link className="dropdown-item"
+                                                                                             to={`/edituser/${user._id}`}><i
+                                                                                                className="fe fe-edit me-2"></i>Edit</Link>
                                                                                     </li>
                                                                                     <li className="delete-alt">
                                                                                         <div>

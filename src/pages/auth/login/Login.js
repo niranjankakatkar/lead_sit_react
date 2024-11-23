@@ -144,7 +144,7 @@ export default function Login() {
                                         <div className="col-6">
                                             <div className="form-check custom-checkbox">
                                                 <input type="checkbox" className="form-check-input" id="cb1"/>
-                                                <label className="custom-control-label" for="cb1">Remember me</label>
+                                                <label className="custom-control-label" htmlFor="cb1">Remember me</label>
                                             </div>
                                         </div>
                                         <div className="col-6 text-end">

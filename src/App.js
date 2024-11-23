@@ -6,6 +6,7 @@ import User from "./pages/user/User";
 import Franchisee from "./pages/franchise/Franchisee";
 import Franchisee_Details from "./pages/franchise/Franchisee_Deatils";
 import User_Details from "./pages/user/User_Details";
+import UserEdit from "./pages/user/UpdateUser";
 import Employee from "./pages/employee/Employee";
 import Employee_Details from "./pages/employee/Employee_Details";
 import Demo from "./Demo";
@@ -50,6 +51,7 @@ function App() {
         <Route path="/Sdashboard" element={<Sdashboard />}></Route>
         <Route path="/user" element={<User />}></Route>
         <Route path="/user-detail/:id" element={<User_Details />}></Route>
+        <Route path="/edituser/:id" element={<UserEdit />}></Route>
         <Route path="/franchisee" element={<Franchisee />}></Route>
         <Route
           path="/franchisee_detail/:id"
