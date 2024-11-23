@@ -14,7 +14,7 @@ export default function Dashboard() {
     useEffect(() => {
         axios.get('http://43.205.22.150:5000/user/getAllCnt')
             .then(res => {
-                console.log(res);
+                //console.log(res);
                 setUserCount(res.data.cnt);
             })
             .catch(err => console.error(err))
@@ -22,7 +22,7 @@ export default function Dashboard() {
         //franchisee
         axios.get('http://43.205.22.150:5000/franchisee/getAllCnt')
         .then(res => {
-            console.log(res);
+            //console.log(res);
             setFranchiseeCount(res.data.cnt);
         })
         .catch(err => console.error(err))    

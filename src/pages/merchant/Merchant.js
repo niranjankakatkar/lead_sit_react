@@ -22,7 +22,7 @@ export default function User() {
     axios
       .get("http://43.205.22.150:5000/merchantonboarding/getAllMerchant")
       .then((res) => {
-        console.log(res);
+        //console.log(res);
         setData(res.data);
       })
       .catch((err) => console.error(err));
@@ -35,7 +35,7 @@ export default function User() {
           id
       )
       .then((res) => {
-        console.log(res);
+        //console.log(res);
         navigate("/merchant");
       })
       .catch((err) => console.error(err));
@@ -53,7 +53,7 @@ export default function User() {
         activeFlag,
       })
       .then((res) => {
-        console.log(res);
+        //console.log(res);
         toast.success("Record Added Successfully", {
           position: "top-right",
           autoClose: 3000,
@@ -68,7 +68,7 @@ export default function User() {
           theme: "colored",
           transition: Slide,
         });
-        console.log(err);
+        //console.log(err);
       });
     /*
             try {
@@ -80,7 +80,7 @@ export default function User() {
                     body: JSON.stringify(formData)
                 })
                 const result=(await response).json();
-                console.log(result);
+                //console.log(result);
                 toast.success('Record Added Successfully', {
                     position: "top-right",
                     autoClose: 3000,
@@ -91,7 +91,7 @@ export default function User() {
                 
                
             } catch (error) {
-                console.log(error.message);
+                //console.log(error.message);
             }finally{
                 setFormData({
                     oname:"",

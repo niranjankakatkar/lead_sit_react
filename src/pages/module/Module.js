@@ -25,7 +25,7 @@ export default function User() {
     axios
       .get("http://43.205.22.150:5000/module/getAllModule")
       .then((res) => {
-        console.log(res);
+        //console.log(res);
         setData(res.data);
       })
       .catch((err) => console.error(err));
@@ -33,7 +33,7 @@ export default function User() {
       //Ge tALL Count
       axios.get('http://43.205.22.150:5000/module/getAllCnt')
       .then(res => {
-          console.log(res);
+          //console.log(res);
 
           setAllCount(res.data.cnt);
       })
@@ -42,7 +42,7 @@ export default function User() {
       //Ge Active Count
       axios.get('http://43.205.22.150:5000/module/getActiveCnt')
             .then(res => {
-                console.log(res);
+                //console.log(res);
 
                 setActiveCount(res.data.cnt);
             })
@@ -51,7 +51,7 @@ export default function User() {
       //Get In Active Count
       axios.get('http://43.205.22.150:5000/module/getInactiveCnt')
             .then(res => {
-                console.log(res);
+                //console.log(res);
 
                 setInactiveCount(res.data.cnt);
             })
@@ -64,7 +64,7 @@ export default function User() {
     axios
       .delete("http://43.205.22.150:5000/module/deleteSingleModule/" + id)
       .then((res) => {
-        console.log(res);
+        //console.log(res);
         navigate("/module");
       })
       .catch((err) => console.error(err));
@@ -80,7 +80,7 @@ export default function User() {
     axios
       .post("http://43.205.22.150:5000/module/createModuleImg", formData)
       .then((res) => {
-        console.log(res);
+        //console.log(res);
         toast.success("Record Added Successfully", {
           position: "top-right",
           autoClose: 3000,
@@ -95,7 +95,7 @@ export default function User() {
           theme: "colored",
           transition: Slide,
         });
-        console.log(err);
+        //console.log(err);
       });
    navigate("/module");
   };

@@ -17,7 +17,7 @@ export default function Navbar() {
         //  setEmail(res.data.email);
         //setMobileno(res.data.mobileno);
         setModules(res.data);
-        //console.log("---------A"+res.data);
+        ////console.log("---------A"+res.data);
       })
       .catch((err) => console.error(err));
   }, []);

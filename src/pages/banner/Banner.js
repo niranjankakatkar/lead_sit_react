@@ -30,7 +30,7 @@ export default function Banner() {
     axios
       .get("http://localhost:5000/banner/getAllBanner")
       .then((res) => {
-        console.log(res);
+        //console.log(res);
         setData(res.data);
       })
       .catch((err) => console.error(err));
@@ -39,7 +39,7 @@ export default function Banner() {
     axios
       .get("http://43.205.22.150:5000/banner/getAllCnt")
       .then((res) => {
-        console.log(res);
+        //console.log(res);
 
         setAllCount(res.data.cnt);
       })
@@ -49,7 +49,7 @@ export default function Banner() {
     axios
       .get("http://43.205.22.150:5000/banner/getActiveCnt")
       .then((res) => {
-        console.log(res);
+        //console.log(res);
 
         setActiveCount(res.data.cnt);
       })
@@ -59,7 +59,7 @@ export default function Banner() {
     axios
       .get("http://43.205.22.150:5000/banner/getInactiveCnt")
       .then((res) => {
-        console.log(res);
+        //console.log(res);
 
         setInactiveCount(res.data.cnt);
       })
@@ -70,7 +70,7 @@ export default function Banner() {
     axios
       .delete("http://43.205.22.150:5000/banner/deletBanner/" + id)
       .then((res) => {
-        console.log(res);
+        //console.log(res);
         navigate("/seller");
       })
       .catch((err) => console.error(err));
@@ -95,7 +95,7 @@ export default function Banner() {
     axios
       .post("http://43.205.22.150:5000/banner/createBannerImg", formData)
       .then((res) => {
-        console.log(res);
+        //console.log(res);
         toast.success("Record Added Successfully", {
           position: "top-right",
           autoClose: 3000,
@@ -110,7 +110,7 @@ export default function Banner() {
           theme: "colored",
           transition: Slide,
         });
-        console.log(err);
+        //console.log(err);
       });
     navigate("/banner");
   };

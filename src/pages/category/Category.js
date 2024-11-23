@@ -27,7 +27,7 @@ export default function User() {
     axios
       .get("http://43.205.22.150:5000/category/getAllCategory")
       .then((res) => {
-        console.log(res);
+        //console.log(res);
         setData(res.data);
       })
       .catch((err) => console.error(err));
@@ -43,7 +43,7 @@ export default function User() {
     axios
       .get("http://43.205.22.150:5000/category/getAllCnt")
       .then((res) => {
-        console.log(res);
+        //console.log(res);
 
         setAllCount(res.data.cnt);
       })
@@ -54,7 +54,7 @@ export default function User() {
     axios
       .get("http://43.205.22.150:5000/category/getActiveCnt")
       .then((res) => {
-        console.log(res);
+        //console.log(res);
 
         setActiveCount(res.data.cnt);
       })
@@ -65,7 +65,7 @@ export default function User() {
     axios
       .get("http://43.205.22.150:5000/category/getInactiveCnt")
       .then((res) => {
-        console.log(res);
+        //console.log(res);
 
         setInactiveCount(res.data.cnt);
       })
@@ -76,7 +76,7 @@ export default function User() {
     axios
       .delete("http://43.205.22.150:5000/caetegory/deleteSingleCategory/" + id)
       .then((res) => {
-        console.log(res);
+        //console.log(res);
         navigate("/category");
       })
       .catch((err) => console.error(err));
@@ -110,7 +110,7 @@ export default function User() {
           theme: "colored",
           transition: Slide,
         });
-        console.error(err);
+        //console.error(err);
       });
   };
 

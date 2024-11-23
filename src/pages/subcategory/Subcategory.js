@@ -26,7 +26,7 @@ export default function User() {
     axios
       .get("http://43.205.22.150:5000/subcategory/getAllSubcategory")
       .then((res) => {
-        console.log(res);
+        //console.log(res);
         setData(res.data);
       })
       .catch((err) => console.error(err));
@@ -63,7 +63,7 @@ export default function User() {
     axios
       .delete("http://43.205.22.150:5000/caetegory/deleteSingleCategory/" + id)
       .then((res) => {
-        console.log(res);
+        //console.log(res);
         navigate("/subcategory");
       })
       .catch((err) => console.error(err));

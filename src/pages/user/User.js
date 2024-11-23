@@ -29,7 +29,7 @@ export default function User() {
     useEffect(() => {
         axios.get('http://43.205.22.150:5000/user/getAllUser')
             .then(res => {
-                console.log(res);
+                //console.log(res);
                 setData(res.data);
             })
             .catch(err => console.error(err))
@@ -38,7 +38,7 @@ export default function User() {
     useEffect(() => {
         axios.get('http://43.205.22.150:5000/user/getAllCnt')
             .then(res => {
-                console.log(res);
+                //console.log(res);
 
                 setAlluser(res.data.cnt);
             })
@@ -48,7 +48,7 @@ export default function User() {
     useEffect(() => {
         axios.get('http://43.205.22.150:5000/user/getActiveCnt')
             .then(res => {
-                console.log(res);
+                //console.log(res);
 
                 setActiveuser(res.data.cnt);
             })
@@ -58,7 +58,7 @@ export default function User() {
     useEffect(() => {
         axios.get('http://43.205.22.150:5000/user/getInactiveCnt')
             .then(res => {
-                console.log(res);
+                //console.log(res);
 
                 setInactiveuser(res.data.cnt);
             })
@@ -71,7 +71,7 @@ export default function User() {
     const handleDelete = (id) => {
         axios.delete('http://43.205.22.150:5000/user/deleteSingleUser/' + id)
             .then(res => {
-                console.log(res);
+                //console.log(res);
                 navigate('/user');
             })
             .catch(err => console.error(err))
@@ -104,8 +104,8 @@ export default function User() {
             .then(res => {
                 const loginID = res.data._id;
                 axios.post('http://43.205.22.150:5000/auth/createAuth', { name, email, password, post_, loginID })
-                //.then(res1=>{ console.log("---------"+res1);})
-                //.catch .catch(err1=>{ console.log("-------"+err1);})
+                //.then(res1=>{ //console.log("---------"+res1);})
+                //.catch .catch(err1=>{ //console.log("-------"+err1);})
 
                 toast.success('Record Added Successfully', {
                     position: "top-right",
@@ -122,15 +122,15 @@ export default function User() {
                     theme: "colored",
                     transition: Slide,
                 });
-                console.log(err)
+                //console.log(err)
             })
         }else{
             axios.post('http://43.205.22.150:5000/user/createUserImg', formData)
             .then(res => {
                 const loginID = res.data._id;
                 axios.post('http://43.205.22.150:5000/auth/createAuth', { name, email, password, post_, loginID })
-                //.then(res1=>{ console.log("---------"+res1);})
-                //.catch .catch(err1=>{ console.log("-------"+err1);})
+                //.then(res1=>{ //console.log("---------"+res1);})
+                //.catch .catch(err1=>{ //console.log("-------"+err1);})
 
                 toast.success('Record Added Successfully', {
                     position: "top-right",
@@ -147,7 +147,7 @@ export default function User() {
                     theme: "colored",
                     transition: Slide,
                 });
-                console.log(err)
+                //console.log(err)
             })
         }
        
@@ -156,7 +156,7 @@ export default function User() {
 
         /*  axios.post('http://43.205.22.150:5000/user/uploadimg',formData)
           .then(res=>{
-              console.log(res);
+              //console.log(res);
              
              
           })
@@ -173,7 +173,7 @@ export default function User() {
                 body: JSON.stringify(formData)
             })
             const result=(await response).json();
-            console.log(result);
+            //console.log(result);
             toast.success('Record Added Successfully', {
                 position: "top-right",
                 autoClose: 3000,
@@ -184,7 +184,7 @@ export default function User() {
             
            
         } catch (error) {
-            console.log(error.message);
+            //console.log(error.message);
         }finally{
             setFormData({
                 name:"",
@@ -222,7 +222,7 @@ export default function User() {
         formData.append('file', file);
         axios.put('http://43.205.22.150:5000/user/updateSingleUser', formData)
             .then(res => {
-                console.log(res);
+                //console.log(res);
                 toast.success('Record Updated Successfully', {
                     position: "top-right",
                     autoClose: 3000,
@@ -238,13 +238,13 @@ export default function User() {
                     theme: "colored",
                     transition: Slide,
                 });
-                console.log(err)
+                //console.log(err)
             })
 
 
         /*  axios.post('http://43.205.22.150:5000/user/uploadimg',formData)
           .then(res=>{
-              console.log(res);
+              //console.log(res);
              
              
           })
@@ -261,7 +261,7 @@ export default function User() {
                 body: JSON.stringify(formData)
             })
             const result=(await response).json();
-            console.log(result);
+            //console.log(result);
             toast.success('Record Added Successfully', {
                 position: "top-right",
                 autoClose: 3000,
@@ -272,7 +272,7 @@ export default function User() {
             
            
         } catch (error) {
-            console.log(error.message);
+            //console.log(error.message);
         }finally{
             setFormData({
                 name:"",

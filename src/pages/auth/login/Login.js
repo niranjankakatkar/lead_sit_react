@@ -59,7 +59,7 @@ export default function Login() {
                                     theme: "colored",
                                     transition: Slide,
                                     });
-                                    console.log(result_);
+                                    //console.log(result_);
                                     localStorage.setItem("token", result_.data.id);
                                     localStorage.setItem("loginID", result_.data.loginID);
                                     navigate("/Udashboard");
@@ -106,7 +106,7 @@ export default function Login() {
                 theme: "colored",
                 transition: Slide,
                 });
-                console.log(error.message);
+               // //console.log(error.message);
             }finally{
                 setFormData({
                    email:"",

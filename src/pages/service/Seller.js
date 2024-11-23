@@ -35,7 +35,7 @@ export default function User() {
     axios
       .get("http://43.205.22.150:5000/seller/getAllSeller")
       .then((res) => {
-        console.log(res);
+        //console.log(res);
         setData(res.data);
       })
       .catch((err) => console.error(err));
@@ -44,7 +44,7 @@ export default function User() {
     axios
       .get("http://43.205.22.150:5000/seller/getAllCnt")
       .then((res) => {
-        console.log(res);
+        //console.log(res);
 
         setAllCount(res.data.cnt);
       })
@@ -54,7 +54,7 @@ export default function User() {
     axios
       .get("http://43.205.22.150:5000/seller/getActiveCnt")
       .then((res) => {
-        console.log(res);
+        //console.log(res);
 
         setActiveCount(res.data.cnt);
       })
@@ -64,7 +64,7 @@ export default function User() {
     axios
       .get("http://43.205.22.150:5000/seller/getInactiveCnt")
       .then((res) => {
-        console.log(res);
+        //console.log(res);
 
         setInactiveCount(res.data.cnt);
       })
@@ -75,7 +75,7 @@ export default function User() {
     axios
       .delete("http://43.205.22.150:5000/seller/deleteSingleSeller/" + id)
       .then((res) => {
-        console.log(res);
+        //console.log(res);
         navigate("/seller");
       })
       .catch((err) => console.error(err));
@@ -101,7 +101,7 @@ export default function User() {
     axios
       .post("http://43.205.22.150:5000/seller/createSellerImg", formData)
       .then((res) => {
-        console.log(res);
+        //console.log(res);
         toast.success("Record Added Successfully", {
           position: "top-right",
           autoClose: 3000,
@@ -116,7 +116,7 @@ export default function User() {
           theme: "colored",
           transition: Slide,
         });
-        console.log(err);
+        //console.log(err);
       });
     navigate("/seller");
   };

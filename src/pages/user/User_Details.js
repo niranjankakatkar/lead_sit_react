@@ -17,13 +17,13 @@ export default function User_Details() {
         const fetchData= async() =>{
             try {
                 const response=await axios.get("http://43.205.22.150:5000/user/getSingleUser/" + id);
-                console.log(response);
+                //console.log(response);
                 setName(response.data.name);
                 setEmail(response.data.email);
                 setMobile(response.data.mobileno);
                 setFileName(response.data.filename);
             } catch (error) {
-                console.log(error)
+                //console.log(error)
             }
         }
         fetchData();

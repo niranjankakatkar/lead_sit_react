@@ -15,12 +15,12 @@ export default function User_Details() {
         const response = await axios.get(
           "http://43.205.22.150:5000/franchisee/getSingleFranchisee/" + id
         );
-        console.log(response);
+        //console.log(response);
         setOname(response.data.oname);
         setEmail(response.data.email);
         setMobile(response.data.mobileno);
       } catch (error) {
-        console.log(error);
+        //console.log(error);
       }
     };
     fetchData();

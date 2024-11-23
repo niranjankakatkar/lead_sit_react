@@ -67,7 +67,7 @@ function ServiceLeadDetails() {
         }
       )
       .then((res) => {
-        console.log(res);
+        //console.log(res);
         toast.success("Record Added Successfully", {
           position: "top-right",
           autoClose: 3000,
@@ -99,7 +99,7 @@ function ServiceLeadDetails() {
           theme: "colored",
           transition: Slide,
         });
-        console.log(err);
+        //console.log(err);
       });
   };
 

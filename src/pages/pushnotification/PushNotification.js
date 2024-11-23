@@ -30,7 +30,7 @@ export default function PushNotification() {
     axios
       .get("http://43.205.22.150:5000/pushnotification/getAllBanner")
       .then((res) => {
-        console.log(res);
+        //console.log(res);
         setData(res.data);
       })
       .catch((err) => console.error(err));
@@ -39,7 +39,7 @@ export default function PushNotification() {
     axios
       .get("http://43.205.22.150:5000/pushnotification/getAllCnt")
       .then((res) => {
-        console.log(res);
+        //console.log(res);
 
         setAllCount(res.data.cnt);
       })
@@ -49,7 +49,7 @@ export default function PushNotification() {
     axios
       .get("http://43.205.22.150:5000/pushnotification/getActiveCnt")
       .then((res) => {
-        console.log(res);
+        //console.log(res);
 
         setActiveCount(res.data.cnt);
       })
@@ -59,7 +59,7 @@ export default function PushNotification() {
     axios
       .get("http://43.205.22.150:5000/pushnotification/getInactiveCnt")
       .then((res) => {
-        console.log(res);
+        //console.log(res);
 
         setInactiveCount(res.data.cnt);
       })
@@ -70,7 +70,7 @@ export default function PushNotification() {
     axios
       .delete("http://43.205.22.150:5000/pushnotification/deletePushnotification/" + id)
       .then((res) => {
-        console.log(res);
+        //console.log(res);
         navigate("/pushnotification");
       })
       .catch((err) => console.error(err));
@@ -92,7 +92,7 @@ export default function PushNotification() {
     axios
       .post("http://43.205.22.150:5000/pushnotification/createPushNotificationImg", formData)
       .then((res) => {
-        console.log(res);
+        //console.log(res);
         toast.success("Record Added Successfully", {
           position: "top-right",
           autoClose: 3000,
@@ -107,7 +107,7 @@ export default function PushNotification() {
           theme: "colored",
           transition: Slide,
         });
-        console.log(err);
+        //console.log(err);
       });
     navigate("/pushnotification");
   };

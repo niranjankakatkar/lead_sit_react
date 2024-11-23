@@ -32,7 +32,7 @@ export default function User() {
     axios
       .get("http://43.205.22.150:5000/franchisee/getAllFranchisee")
       .then((res) => {
-        console.log(res);
+        //console.log(res);
         setData(res.data);
       })
       .catch((err) => console.error(err));
@@ -41,7 +41,7 @@ export default function User() {
   useEffect(() => {
     axios.get('http://43.205.22.150:5000/franchisee/getAllCnt')
         .then(res => {
-            console.log(res);
+            //console.log(res);
 
             setAllfranchisee(res.data.cnt);
         })
@@ -51,7 +51,7 @@ export default function User() {
 useEffect(() => {
   axios.get('http://43.205.22.150:5000/franchisee/getActiveCnt')
       .then(res => {
-          console.log(res);
+          //console.log(res);
 
           setActivefranchisee(res.data.cnt);
       })
@@ -61,7 +61,7 @@ useEffect(() => {
 useEffect(() => {
   axios.get('http://43.205.22.150:5000/franchisee/getInactiveCnt')
       .then(res => {
-          console.log(res);
+          //console.log(res);
 
           setInactivefranchisee(res.data.cnt);
       })
@@ -74,7 +74,7 @@ useEffect(() => {
     axios
       .delete("http://43.205.22.150:5000/franchisee/deleteSingleFranchisee/" + id)
       .then((res) => {
-        console.log(res);
+        //console.log(res);
         navigate("/franchisee");
       })
       .catch((err) => console.error(err));
@@ -92,7 +92,7 @@ useEffect(() => {
         activeFlag,
       })
       .then((res) => {
-        console.log(res);
+        //console.log(res);
         toast.success("Record Added Successfully", {
           position: "top-right",
           autoClose: 3000,
@@ -107,7 +107,7 @@ useEffect(() => {
           theme: "colored",
           transition: Slide,
         });
-        console.log(err);
+        //console.log(err);
       });
     /*
             try {
@@ -119,7 +119,7 @@ useEffect(() => {
                     body: JSON.stringify(formData)
                 })
                 const result=(await response).json();
-                console.log(result);
+                //console.log(result);
                 toast.success('Record Added Successfully', {
                     position: "top-right",
                     autoClose: 3000,
@@ -130,7 +130,7 @@ useEffect(() => {
                 
                
             } catch (error) {
-                console.log(error.message);
+                //console.log(error.message);
             }finally{
                 setFormData({
                     oname:"",
